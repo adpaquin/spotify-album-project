@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import AlbumsIndexContainer from '../containers/AlbumsIndexContainer'
-import AlbumsShowContainer from '../containers/AlbumsShowContainer'
+import AlbumShowContainer from '../containers/AlbumShowContainer'
 
 export const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/albums' component={AlbumsIndexContainer} />
-        <Route exact path='/albums/:id' component={AlbumsShowContainer} />
+        <Route exact path="/albums" component={AlbumsIndexContainer} />
+        <Route exact path="/albums/:id" component={AlbumShowContainer} />
       </Switch>
     </BrowserRouter>
   )
