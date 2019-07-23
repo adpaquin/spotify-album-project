@@ -12,20 +12,18 @@ class Feature < ApplicationRecord
 
   belongs_to :song
 
-  def self.add(song)
-    song_id = song.id
-    song_token = song.token
+  def self.add(song, new_song)
 
-    song_features = RSpotify::Track.find(song_token)
+    song_id = new_song.id
 
-    acousticness = song_features.audio_features.acousticness
-    danceability = song_features.audio_features.danceability
-    energy = song_features.audio_features.energy
-    instrumentalness = song_features.audio_features.instrumentalness
-    liveness = song_features.audio_features.liveness
-    loudness = song_features.audio_features.loudness
-    speechiness = song_features.audio_features.speechiness
-    tempo = song_features.audio_features.tempo
+    acousticness = song.audio_features.acousticness
+    danceability = song.audio_features.danceability
+    energy = song.audio_features.energy
+    instrumentalness = song.audio_features.instrumentalness
+    liveness = song.audio_features.liveness
+    loudness = song.audio_features.loudness
+    speechiness = song.audio_features.speechiness
+    tempo = song.audio_features.tempo
 
     Feature.create(song_id: song_id, acousticness: acousticness, danceability: danceability, energy: energy, instrumentalness: instrumentalness, liveness: liveness, loudness: loudness, speechiness: speechiness, tempo: tempo)
   end

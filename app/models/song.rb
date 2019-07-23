@@ -18,9 +18,10 @@ class Song < ApplicationRecord
       token = song.id
       duration = song.duration_ms
       track_number = song.track_number
-      Song.create(album_id: album_id, name: name, token: token, duration: duration, track_number: track_number)
+      new_song = Song.create(album_id: album_id, name: name, token: token, duration: duration, track_number: track_number)
+
+      Feature.add(song, new_song)
     end
 
-    
   end
 end
