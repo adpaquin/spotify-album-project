@@ -6,6 +6,8 @@ class Song < ApplicationRecord
   validates :duration, presence: true
   validates :track_number, presence: true
 
+  has_many :features, :dependent => :destroy
+
   belongs_to :album
 
   def self.add(album, new_album)
@@ -18,5 +20,7 @@ class Song < ApplicationRecord
       track_number = song.track_number
       Song.create(album_id: album_id, name: name, token: token, duration: duration, track_number: track_number)
     end
+
+    
   end
 end
