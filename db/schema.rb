@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2019_07_21_213045) do
   create_table "albums", force: :cascade do |t|
     t.string "artist_name", null: false
     t.string "name", null: false
-    t.integer "duration", null: false
     t.text "cover_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,9 +25,14 @@ ActiveRecord::Schema.define(version: 2019_07_21_213045) do
 
   create_table "songs", force: :cascade do |t|
     t.string "name", null: false
-    t.string "token", null: false
     t.integer "duration", null: false
     t.integer "track_number", null: false
+    t.decimal "acousticness", null: false
+    t.decimal "danceability", null: false
+    t.decimal "energy", null: false
+    t.decimal "instrumentalness", null: false
+    t.decimal "liveness", null: false
+    t.decimal "tempo", null: false
     t.bigint "album_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
