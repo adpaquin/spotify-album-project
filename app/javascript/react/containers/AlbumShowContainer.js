@@ -4,7 +4,7 @@ class AlbumShowContainer extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        albumInfo: {}
+        albumInfo: []
       }
     }
 
@@ -30,7 +30,12 @@ class AlbumShowContainer extends Component {
     render(){
       return(
         <div>
-          Artist: {this.state.albumInfo.artist_name}
+          <div>
+            Artist: {this.state.albumInfo.artist_name}
+          </div>
+          <div>
+            Album: {this.state.albumInfo.name}
+          </div>
         </div>
       )
     }
