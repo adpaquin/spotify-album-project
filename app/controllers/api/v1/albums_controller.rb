@@ -1,5 +1,4 @@
 require_relative '../../application_controller'
-require_relative '../../../models/serializers/album_show_serializer'
 
 class Api::V1::AlbumsController <ApplicationController
 
@@ -8,7 +7,7 @@ class Api::V1::AlbumsController <ApplicationController
   end
 
   def show
-    render json: Album.find(params[:id]), serializer: AlbumShowSerializer
+    render json: Album.find(params[:id])
   end
 
 end
