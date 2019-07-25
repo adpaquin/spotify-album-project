@@ -11,8 +11,6 @@ class Song < ApplicationRecord
   validates :liveness, presence: true
   validates :tempo, presence: true
 
-  has_many :features, :dependent => :destroy
-
   belongs_to :album
 
   def self.add(album, new_album)
