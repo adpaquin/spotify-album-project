@@ -18,4 +18,7 @@ class UsersController < ApplicationController
     @albums = Album.all
   end
 
+  def albums
+  end
+
 end
