@@ -14,17 +14,16 @@ class Album < ApplicationRecord
   has_many :songs, :dependent => :destroy
 
   def self.add(album)
-    # binding.pry
     name = album.name
     artist = album.artists[0].name
     cover_image = album.images[0]["url"]
-    # binding.pry
+
     acousticness_average = Album.acousticness_average(album)
-    danceability_average = Album.acousticness_average(album)
-    energy_average = Album.acousticness_average(album)
-    instrumentalness_average = Album.acousticness_average(album)
-    liveness_average = Album.acousticness_average(album)
-    tempo_average = Album.acousticness_average(album)
+    danceability_average = Album.danceability_average(album)
+    energy_average = Album.energy_average(album)
+    instrumentalness_average = Album.instrumentalness_average(album)
+    liveness_average = Album.liveness_average(album)
+    tempo_average = Album.tempo_average(album)
 
 
     Album.create(artist_name: artist,
@@ -39,64 +38,64 @@ class Album < ApplicationRecord
   end
 
   def self.acousticness_average(album)
-    average = 0.0
+    sum = 0.0
     counter = 0.0
     album.tracks_cache.each do |song|
-      average += song.audio_features.acousticness
+      sum += song.audio_features.acousticness
       counter += 1
     end
-    return average / counter
+    return sum / counter
   end
 
     def self.danceability_average(album)
-      average = 0.0
+      sum = 0.0
       counter = 0.0
       album.tracks_cache.each do |song|
-        average += song.audio_features.danceability
+        sum += song.audio_features.danceability
         counter += 1
       end
-      return danceability_average / counter
+      return sum / counter
 
     end
 
     def self.energy_average(album)
-      average = 0.0
+      sum = 0.0
       counter = 0.0
       album.tracks_cache.each do |song|
-        average += song.audio_features.energy
+        sum += song.audio_features.energy
         counter += 1
       end
-      return energy_average / counter
+      return sum / counter
     end
 
     def self.instrumentalness_average(album)
-      average = 0.0
+      sum = 0.0
       counter = 0.0
       album.tracks_cache.each do |song|
-        average += song.audio_features.instrumentalness
+        sum += song.audio_features.instrumentalness
         counter += 1
       end
-      return averahe / counter
+      return sum / counter
     end
 
     def self.liveness_average(album)
       counter = 0.0
-      average = 0.0
+      sum = 0.0
       album.tracks_cache.each do |song|
-        average += song.audio_features.liveness
+        sum += song.audio_features.liveness
         counter += 1
       end
-      return average / counter
+      return sum / counter
     end
 
     def self.tempo_average(album)
-      average = 0.0
+      sum = 0.0
       counter = 0.0
       album.tracks_cache.each do |song|
-        tempo = song.audio_features.tempo
+        sum += song.audio_features.tempo
         counter += 1
       end
-      return average / counter
+      return sum / counter
     end
 
 end
