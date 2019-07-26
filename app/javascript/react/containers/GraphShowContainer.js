@@ -6,7 +6,18 @@ class GraphShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      albumInfo: []
+      albumInfo: [],
+      data: [
+        {
+          name: 'Album 1',
+          acousticness: .7,
+          danceability: 1,
+          energy: .8,
+          instrumentalness: .8,
+          liveness: .6,
+          tempo: .7
+        }
+      ]
     }
   }
 
@@ -31,23 +42,11 @@ class GraphShowContainer extends Component {
 
   render() {
 
-    let data = [
-      {
-        name: 'Album 1',
-        acousticness: .7,
-        danceability: 1,
-        energy: .8,
-        instrumentalness: .8,
-        liveness: .6,
-        tempo: .7
-      }
-    ];
-
     const basicFormat = format('.1r');
 
     return (
       <RadarChart
-        data={data}
+        data={this.state.data}
         tickFormat={t => basicFormat(t)}
         startingAngle={0}
         domains={[
@@ -56,7 +55,7 @@ class GraphShowContainer extends Component {
           {name: 'energy', domain: [0, 1], getValue: d => d.energy},
           {name: 'instrumentalness', domain: [0, 1], getValue: d => d.instrumentalness},
           {name: 'liveness', domain: [0, 1], getValue: d => d.liveness},
-          {name: 'tempo', domain: [0, 100], getValue: d => d.tempo}
+          {name: 'tempo', domain: [0, 1], getValue: d => d.tempo}
         ]}
         width={600}
         height={500}
