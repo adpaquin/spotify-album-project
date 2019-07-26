@@ -10,12 +10,12 @@ class GraphShowContainer extends Component {
       data: [
         {
           name: 'Album 1',
-          acousticness: .7,
-          danceability: 1,
-          energy: .8,
-          instrumentalness: .8,
-          liveness: .6,
-          tempo: .7
+          acousticness: 70,
+          danceability: 100,
+          energy: 80,
+          instrumentalness: 80,
+          liveness: 60,
+          tempo: 70
         }
       ]
     }
@@ -59,12 +59,12 @@ class GraphShowContainer extends Component {
         tickFormat={t => basicFormat(t)}
         startingAngle={0}
         domains={[
-          {name: 'acousticness', domain: [0, 1], getValue: d => d.acousticness},
-          {name: 'danceability', domain: [0, 1], getValue: d => d.danceability},
-          {name: 'energy', domain: [0, 1], getValue: d => d.energy},
-          {name: 'instrumentalness', domain: [0, 1], getValue: d => d.instrumentalness},
-          {name: 'liveness', domain: [0, 1], getValue: d => d.liveness},
-          {name: 'tempo', domain: [0, 1], getValue: d => d.tempo}
+          {name: 'acousticness', domain: [0, 100], getValue: d => d.acousticness},
+          {name: 'danceability', domain: [0, 100], getValue: d => d.danceability},
+          {name: 'energy', domain: [0, 100], getValue: d => d.energy},
+          {name: 'instrumentalness', domain: [0, 100], getValue: d => d.instrumentalness},
+          {name: 'liveness', domain: [0, 100], getValue: d => d.liveness},
+          {name: 'tempo', domain: [0, 100], getValue: d => d.tempo}
         ]}
         width={600}
         height={500}
