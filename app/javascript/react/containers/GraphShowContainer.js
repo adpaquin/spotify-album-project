@@ -45,6 +45,15 @@ class GraphShowContainer extends Component {
     const basicFormat = format('.1r');
 
     return (
+
+      <div>
+        <div>
+          Artist: {this.state.albumInfo.artist_name}
+        </div>
+        <div>
+          Album: {this.state.albumInfo.name}
+        </div>
+
       <RadarChart
         data={this.state.data}
         tickFormat={t => basicFormat(t)}
@@ -60,6 +69,8 @@ class GraphShowContainer extends Component {
         width={600}
         height={500}
       />
+
+      </div>
     );
   }
 }
