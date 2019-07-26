@@ -1,62 +1,68 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {format} from 'd3-format';
+import {RadarChart} from 'react-vis';
 
-import RadarChart from 'react-vis';
-
-const DATA = [
-  {
-    name: 'Mercedes',
-    mileage: 7,
-    price: 10,
-    safety: 8,
-    performance: 9,
-    interior: 7,
-    warranty: 7
-  },
-  {
-    name: 'Honda',
-    mileage: 8,
-    price: 6,
-    safety: 9,
-    performance: 6,
-    interior: 3,
-    warranty: 9
-  },
-  {
-    name: 'Chevrolet',
-    mileage: 5,
-    price: 4,
-    safety: 6,
-    performance: 4,
-    interior: 5,
-    warranty: 6
+class GraphShowContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      albumInfo: []
+    }
   }
-];
 
-const basicFormat = format('.2r');
-const wideFormat = format('.3r');
+  componentDidMount(){
+    let albumId = this.props.match.params.id
+    fetch(`/api/v1/albums/${albumId}`)
+      .then(response => {
+        if(response.ok){
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({ albumInfo: body })
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
-export default function BasicRadarChart(props) {
-  return (
-    <RadarChart
-      data={DATA}
-      tickFormat={t => wideFormat(t)}
-      startingAngle={0}
-      domains={[
-        {name: 'mileage', domain: [0, 10]},
-        {
-          name: 'price',
-          domain: [2, 16],
-          tickFormat: t => `$${basicFormat(t)}`,
-          getValue: d => d.price
-        },
-        {name: 'safety', domain: [5, 10], getValue: d => d.safety},
-        {name: 'performance', domain: [0, 10], getValue: d => d.performance},
-        {name: 'interior', domain: [0, 7], getValue: d => d.interior},
-        {name: 'warranty', domain: [10, 2], getValue: d => d.warranty}
-      ]}
-      width={400}
-      height={300}
-    />
-  );
+  render() {
+
+    let data = [
+      {
+        name: 'Album 1',
+        acousticness: .7,
+        danceability: 1,
+        energy: .8,
+        instrumentalness: .8,
+        liveness: .6,
+        tempo: .7
+      }
+    ];
+
+    const basicFormat = format('.1r');
+
+    return (
+      <RadarChart
+        data={data}
+        tickFormat={t => basicFormat(t)}
+        startingAngle={0}
+        domains={[
+          {name: 'acousticness', domain: [0, 1], getValue: d => d.acousticness},
+          {name: 'danceability', domain: [0, 1], getValue: d => d.danceability},
+          {name: 'energy', domain: [0, 1], getValue: d => d.energy},
+          {name: 'instrumentalness', domain: [0, 1], getValue: d => d.instrumentalness},
+          {name: 'liveness', domain: [0, 1], getValue: d => d.liveness},
+          {name: 'tempo', domain: [0, 100], getValue: d => d.tempo}
+        ]}
+        width={600}
+        height={500}
+      />
+    );
+  }
 }
+
+export default GraphShowContainer
