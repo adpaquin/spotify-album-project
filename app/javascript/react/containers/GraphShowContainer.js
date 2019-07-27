@@ -6,8 +6,26 @@ class GraphShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      albumInfo_1: [],
+      albumInfo: []
     }
+    this.addAlbum = this.addAlbum.bind(this)
+  }
+
+  addAlbum() {
+    // let newAlbum = {
+    //   acousticness_average: 40,
+    //   danceability_average: 40,
+    //   energy_average: 40,
+    //   instrumentalness_average: 40,
+    //   liveness_average: 40,
+    //   tempo_average: 40
+    // }
+
+    let baseAlbum = this.state.albumInfo
+    let comaparedAlbums = baseAlbum.concat([newAlbum])
+
+    this.setState({ albumInfo: comaparedAlbums })
+
   }
 
   componentDidMount(){
@@ -24,20 +42,20 @@ class GraphShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ albumInfo_1: [body] })
+        this.setState({ albumInfo: [body] })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
 
-    debugger
+    // debugger
 
     return (
-
+      <div>
 
       <RadarChart
-        data={this.state.albumInfo_1}
+        data={this.state.albumInfo}
         startingAngle={0}
         width={600}
         height={500}
@@ -59,6 +77,10 @@ class GraphShowContainer extends Component {
           {name: 'tempo', domain: [0, 100], getValue: d => d.tempo_average}
         ]}
       />
+
+      <button onClick={this.addAlbum}>Click to add Malibu</button>
+
+      </div>
     );
   }
 }
