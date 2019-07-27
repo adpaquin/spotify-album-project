@@ -25,7 +25,6 @@ class Album < ApplicationRecord
     liveness_average = Album.liveness_average(album)
     tempo_average = Album.tempo_average(album)
 
-
     Album.create(artist_name: artist,
                 name: name,
                 cover_image: cover_image,
@@ -44,7 +43,7 @@ class Album < ApplicationRecord
       sum += song.audio_features.acousticness
       counter += 1
     end
-    return sum / counter
+    return (sum * 100 / counter)
   end
 
     def self.danceability_average(album)
@@ -54,7 +53,7 @@ class Album < ApplicationRecord
         sum += song.audio_features.danceability
         counter += 1
       end
-      return sum / counter
+      return (sum * 100 / counter)
 
     end
 
@@ -65,7 +64,7 @@ class Album < ApplicationRecord
         sum += song.audio_features.energy
         counter += 1
       end
-      return sum / counter
+      return (sum * 100 / counter)
     end
 
     def self.instrumentalness_average(album)
@@ -75,7 +74,7 @@ class Album < ApplicationRecord
         sum += song.audio_features.instrumentalness
         counter += 1
       end
-      return sum / counter
+      return (sum * 100 / counter)
     end
 
     def self.liveness_average(album)
@@ -85,7 +84,7 @@ class Album < ApplicationRecord
         sum += song.audio_features.liveness
         counter += 1
       end
-      return sum / counter
+      return (sum * 100 / counter)
     end
 
     def self.tempo_average(album)
@@ -95,7 +94,7 @@ class Album < ApplicationRecord
         sum += song.audio_features.tempo
         counter += 1
       end
-      return sum / counter
+      return (sum / counter)
     end
 
 end

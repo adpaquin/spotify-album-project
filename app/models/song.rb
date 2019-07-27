@@ -20,11 +20,11 @@ class Song < ApplicationRecord
       name = song.name
       duration = song.duration_ms
       track_number = song.track_number
-      acousticness = song.audio_features.acousticness
-      danceability = song.audio_features.danceability
-      energy = song.audio_features.energy
-      instrumentalness = song.audio_features.instrumentalness
-      liveness = song.audio_features.liveness
+      acousticness = song.audio_features.acousticness * 100
+      danceability = song.audio_features.danceability * 100
+      energy = song.audio_features.energy * 100
+      instrumentalness = song.audio_features.instrumentalness * 100
+      liveness = song.audio_features.liveness * 100
       tempo = song.audio_features.tempo
 
 
