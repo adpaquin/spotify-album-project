@@ -45,7 +45,7 @@ class GraphShowContainer extends Component {
           {name: 'energy', domain: [0, 100], getValue: d => d.energy_average},
           {name: 'instrumentalness', domain: [0, 100], getValue: d => d.instrumentalness_average},
           {name: 'liveness', domain: [0, 100], getValue: d => d.liveness_average},
-          {name: 'tempo', domain: [0, 1000], getValue: d => d.tempo_average}
+          {name: 'tempo', domain: [0, 100], getValue: d => d.tempo_average}
         ]}
         width={600}
         height={500}
