@@ -31,6 +31,8 @@ class GraphShowContainer extends Component {
 
   render() {
 
+    debugger
+
     return (
 
 
