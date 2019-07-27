@@ -20,13 +20,30 @@ class GraphShowContainer extends Component {
     //   liveness_average: 40,
     //   tempo_average: 40
     // }
-
+    let newAlbum;
+    let comaparedAlbums;
     let baseAlbum = this.state.albumInfo
-    let comaparedAlbums = baseAlbum.concat([newAlbum])
 
-    this.setState({ albumInfo: comaparedAlbums })
-
+    fetch(`/api/v1/albums/21`)
+      .then(response => {
+        if(response.ok){
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        comaparedAlbums = baseAlbum.concat([body])
+        this.setState({ albumInfo: comaparedAlbums })
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
+
+
+
 
   componentDidMount(){
     let albumId = this.props.match.params.id
@@ -46,6 +63,9 @@ class GraphShowContainer extends Component {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
+
+
+
 
   render() {
 
