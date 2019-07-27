@@ -30,15 +30,24 @@ class GraphShowContainer extends Component {
   }
 
   render() {
-    const basicFormat = format('.1r');
 
     return (
 
 
       <RadarChart
         data={this.state.albumInfo_1}
-        tickFormat={t => basicFormat(t)}
         startingAngle={0}
+        width={600}
+        height={500}
+        margin={{left: 60,top: 50, bottom: 50, right: 60}}
+        style={{
+          labels: {fontSize: 20},
+          polygons: {
+            strokeWidth: 0.5,
+            strokeOpacity: 1,
+            fillOpacity: 0.1
+          },
+        }}
         domains={[
           {name: 'acousticness', domain: [0, 100], getValue: d => d.acousticness_average},
           {name: 'danceability', domain: [0, 100], getValue: d => d.danceability_average},
@@ -47,8 +56,6 @@ class GraphShowContainer extends Component {
           {name: 'liveness', domain: [0, 100], getValue: d => d.liveness_average},
           {name: 'tempo', domain: [0, 100], getValue: d => d.tempo_average}
         ]}
-        width={600}
-        height={500}
       />
     );
   }
