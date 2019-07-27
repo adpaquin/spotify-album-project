@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from 'react-router-dom'
 import AlbumTile from '../components/AlbumTile'
 
 class AlbumsIndexContainer extends Component {
@@ -41,7 +42,10 @@ class AlbumsIndexContainer extends Component {
     })
 
     return(
-      <div>{albumTiles}</div>
+      <div>
+      <Link to='/form'>Add New Album</Link>
+        <div>{albumTiles}</div>
+      </div>
     )
   }
 }
