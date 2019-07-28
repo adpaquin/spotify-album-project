@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {format} from 'd3-format';
 import {RadarChart} from 'react-vis';
+import SongTile from '../components/SongTile'
 
 class GraphShowContainer extends Component {
   constructor(props) {
@@ -70,36 +71,62 @@ class GraphShowContainer extends Component {
   render() {
 
     // debugger
+    let mainAlbumArtist = ''
+    let mainAlbumName = ''
+    let mainAlbumSongs = []
 
+      if(this.state.albumInfo[0]) {
+        mainAlbumArtist = this.state.albumInfo[0].artist_name
+        mainAlbumName = this.state.albumInfo[0].name
+
+        mainAlbumSongs = this.state.albumInfo[0].songs.map(song => {
+          return (
+            <SongTile
+            key={song.id}
+            songName={song.name}
+            />
+          )
+        })
+      }
+
+
+      // debugger
     return (
       <div>
+        <h1>
+          {mainAlbumArtist} - {mainAlbumName}
+        </h1>
 
-      <RadarChart
-        data={this.state.albumInfo}
-        startingAngle={0}
-        width={600}
-        height={500}
-        margin={{left: 60,top: 50, bottom: 50, right: 60}}
-        style={{
-          labels: {fontSize: 20},
-          polygons: {
-            strokeWidth: 0.5,
-            strokeOpacity: 1,
-            fillOpacity: 0.1
-          },
-        }}
-        domains={[
-          {name: 'acousticness', domain: [0, 100], getValue: d => d.acousticness_average},
-          {name: 'danceability', domain: [0, 100], getValue: d => d.danceability_average},
-          {name: 'energy', domain: [0, 100], getValue: d => d.energy_average},
-          {name: 'instrumentalness', domain: [0, 100], getValue: d => d.instrumentalness_average},
-          {name: 'liveness', domain: [0, 100], getValue: d => d.liveness_average},
-          {name: 'tempo', domain: [0, 100], getValue: d => d.tempo_average}
-        ]}
-      />
+        <RadarChart
+          data={this.state.albumInfo}
+          startingAngle={0}
+          width={600}
+          height={500}
+          margin={{left: 60,top: 50, bottom: 50, right: 60}}
+          style={{
+            labels: {fontSize: 20},
+            polygons: {
+              strokeWidth: 0.5,
+              strokeOpacity: 1,
+              fillOpacity: 0.1
+            },
+          }}
+          domains={[
+            {name: 'acousticness', domain: [0, 100], getValue: d => d.acousticness_average},
+            {name: 'danceability', domain: [0, 100], getValue: d => d.danceability_average},
+            {name: 'energy', domain: [0, 100], getValue: d => d.energy_average},
+            {name: 'instrumentalness', domain: [0, 100], getValue: d => d.instrumentalness_average},
+            {name: 'liveness', domain: [0, 100], getValue: d => d.liveness_average},
+            {name: 'tempo', domain: [0, 100], getValue: d => d.tempo_average}
+          ]}
+        />
 
-      <button onClick={this.addAlbum}>Click to add Malibu</button>
+        <button onClick={this.addAlbum}>Click to add Malibu</button>
 
+        <div>
+          Album Songs:
+          {mainAlbumSongs}
+        </div>
       </div>
     );
   }

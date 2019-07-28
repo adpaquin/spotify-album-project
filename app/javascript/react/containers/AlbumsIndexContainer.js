@@ -41,7 +41,10 @@ class AlbumsIndexContainer extends Component {
     })
 
     return(
-      <div>{albumTiles}</div>
+      <div>
+        <h1>My Albums </h1>
+        <div>{albumTiles}</div>
+      </div>
     )
   }
 }
