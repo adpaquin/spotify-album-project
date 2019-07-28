@@ -1,8 +1,7 @@
-import React, { Component } from "react"
-import { Link } from 'react-router-dom'
-import AlbumTile from '../components/AlbumTile'
+import React, { Component } from 'react'
+import AlbumSelectTile from './AlbumSelectTile'
 
-class AlbumsIndexContainer extends Component {
+class FormAlbumSongsField extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -29,29 +28,44 @@ class AlbumsIndexContainer extends Component {
   }
 
   render() {
-    let albumTiles = this.state.albums.map(album => {
+    let albums = this.state.albums.map(album => {
+
+      let songs = album.songs.map(song => {
+        return (
+          <option key={song.id}>
+            {song.name}
+          </option>
+        )
+      })
+
       return (
-        <AlbumTile
-          key={album.id}
-          id={album.id}
-          artist_name={album.artist_name}
-          name={album.name}
-          cover_image={album.cover_image}
-        />
+        <div key={album.id}>
+        {album.artist_name} - {album.name}
+          <select>
+            {songs}
+          </select>
+        </div>
       )
     })
 
+
     return(
       <div>
-<<<<<<< HEAD
-        <h1>My Albums </h1>
-        <Link to='/form'>Add New Album</Link>
-=======
->>>>>>> master
-        <div>{albumTiles}</div>
+        {albums}
       </div>
     )
   }
 }
 
-export default AlbumsIndexContainer
+export default FormAlbumSongsField
+
+
+
+
+
+
+
+
+// <AlbumSelectTile
+// songs={album.songs}
+// />
