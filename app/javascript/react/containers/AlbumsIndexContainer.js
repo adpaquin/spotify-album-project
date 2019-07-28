@@ -43,11 +43,8 @@ class AlbumsIndexContainer extends Component {
 
     return(
       <div>
-<<<<<<< HEAD
         <h1>My Albums </h1>
         <Link to='/form'>Add New Album</Link>
-=======
->>>>>>> master
         <div>{albumTiles}</div>
       </div>
     )
