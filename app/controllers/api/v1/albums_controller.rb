@@ -10,4 +10,12 @@ class Api::V1::AlbumsController <ApplicationController
     render json: Album.find(params[:id])
   end
 
+  def create
+    binding.pry
+  end
+
+  def new
+    binding.pry
+  end
+
 end

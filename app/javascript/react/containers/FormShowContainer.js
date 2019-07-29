@@ -13,11 +13,42 @@ class FormShowContainer extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleSongsChange = this.handleSongsChange.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.addNewAlbum = this.addNewAlbum.bind(this)
 
   }
 
-  handleFormSubmit() {
-    alert("Form submitted")
+  addNewAlbum(formPayload) {
+
+    alert("you clicked a button. congrats")
+    // fetch('/api/v1/albums', {
+    //   credentials: 'same-origin',
+    //   method: 'POST',
+    //   headers: {
+    //      'Accept': 'application/json',
+    //      'Content-Type': 'application/json'
+    //    },
+    //   body: JSON.stringify(formPayload)
+    // })
+    // .then(response => {
+    //   if (response.ok) {
+    //     return response;
+    //   } else {
+    //     let errorMessage = `${response.status} (${response.statusText})`,
+    //      error = new Error(errorMessage);
+    //     throw(error);
+    //   }
+    // })
+    // .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  handleFormSubmit(event) {
+    event.preventDefault()
+    let formPayload = {
+      albumName: this.state.albumName,
+      albumSongs: this.state.albumSongs,
+    }
+    this.addNewAlbum(formPayload)
   }
 
   handleNameChange(event) {
