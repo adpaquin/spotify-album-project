@@ -3,7 +3,9 @@ import React from 'react'
 const FormAlbumNameField = (props) => {
   return(
     <label> {props.label}
-      <textarea/>
+      <textarea
+        onChange={props.handlerFunction}
+      />
     </label>
   )
 
