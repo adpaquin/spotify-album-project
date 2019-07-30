@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormAlbumNameField = (props) => {
+const FormCoverArtField = (props) => {
   return(
     <label> {props.label}
       <textarea
@@ -11,4 +11,4 @@ const FormAlbumNameField = (props) => {
 
 }
 
-export default FormAlbumNameField
+export default FormCoverArtField

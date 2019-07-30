@@ -16,9 +16,9 @@ class Song < ApplicationRecord
   has_many :albums, through: :playlists
 
   attr_accessor :new_songs_arr
-  @new_songs_arr = []
 
   def self.add(album)
+    @new_songs_arr = []
     album.tracks_cache.each do |song|
       name = song.name
       duration = song.duration_ms
@@ -43,9 +43,6 @@ class Song < ApplicationRecord
 
     @new_songs_arr << new_song
 
-    # Playlist.add(@new_song_arr)
-    # Playlist.create(songs_id: new_song.id, albums_id: new_album.id)
-    # binding.pry
 
     end
 
