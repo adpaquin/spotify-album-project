@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
 import FormAlbumNameField from '../components/FormAlbumNameField'
 import FormAlbumSongsField from '../components/FormAlbumSongsField'
+import FormCoverArtField from '../components/FormCoverArtField'
+
 
 class FormShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
       albumName: '',
-      albumSongs: []
+      albumSongs: [],
+      albumCoverURL: ''
 
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handleSongsChange = this.handleSongsChange.bind(this)
+    this.handleURLChange = this.handleURLChange.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.addNewAlbum = this.addNewAlbum.bind(this)
 
@@ -45,7 +49,8 @@ class FormShowContainer extends Component {
     event.preventDefault()
     let formPayload = {
       name: this.state.albumName,
-      albumSongs: this.state.albumSongs
+      albumSongs: this.state.albumSongs,
+      albumCoverURL: this.state.albumCoverURL
     }
 
     this.addNewAlbum(formPayload)
@@ -54,6 +59,11 @@ class FormShowContainer extends Component {
   handleNameChange(event) {
     console.log(this.state.albumName)
     this.setState({ albumName: event.target.value })
+  }
+
+  handleURLChange(event) {
+    console.log(this.state.albumCoverURL)
+    this.setState({ albumCoverURL: event.target.value })
   }
 
   handleSongsChange(event) {
@@ -70,6 +80,11 @@ class FormShowContainer extends Component {
           label="Album Name"
           name="Album Name"
           handlerFunction={this.handleNameChange}
+        />
+        <FormCoverArtField
+        label="Album Cover URL"
+        name="Album Cover URL"
+        handlerFunction={this.handleURLChange}
         />
         <FormAlbumSongsField
           label="Songs"

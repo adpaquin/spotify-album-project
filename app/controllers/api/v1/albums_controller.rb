@@ -16,22 +16,17 @@ class Api::V1::AlbumsController <ApplicationController
   def create
     name = params[:name]
     songs = params[:albumSongs]
+    url = params[:albumCoverURL]
     new_song_arr = []
 
     songs.each do |song|
       new_song_arr << Song.where(name: song)
     end
 
-    # binding.pry
 
-    new_album = Album.add_new(name, new_song_arr)
+    new_album = Album.add_new(name, new_song_arr, url)
 
-    binding.pry
     Playlist.add_new(new_album, new_song_arr)
-
-    # Find songs in songNames array.
-    # use songs to get average album features and create album
-    # create playlist object with songs and new album
   end
 
   def new

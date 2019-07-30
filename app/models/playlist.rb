@@ -13,7 +13,6 @@ class Playlist < ApplicationRecord
 
   def self.add_new(new_album, new_song_arr)
     new_song_arr.each do |song|
-      binding.pry
       Playlist.create(album_id: new_album.id, song_id: song[0].id)
     end
   end

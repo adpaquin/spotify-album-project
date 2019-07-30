@@ -100,8 +100,9 @@ class Album < ApplicationRecord
 
 
 
-    def self.add_new(name, new_song_arr)
+    def self.add_new(name, new_song_arr, url)
       name = name
+      url = url
       counter = 0.0
 
       acousticness_sum = 0.0
@@ -133,6 +134,7 @@ class Album < ApplicationRecord
 
       Album.create(
                   name: name,
+                  cover_image: url,
                   acousticness_average: acousticness_average,
                   danceability_average: danceability_average,
                   energy_average: energy_average,
