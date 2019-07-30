@@ -19,48 +19,48 @@ class FormShowContainer extends Component {
   }
 
   addNewAlbum(formPayload) {
-
-    alert("you clicked a button. congrats")
-    // fetch('/api/v1/albums', {
-    //   credentials: 'same-origin',
-    //   method: 'POST',
-    //   headers: {
-    //      'Accept': 'application/json',
-    //      'Content-Type': 'application/json'
-    //    },
-    //   body: JSON.stringify(formPayload)
-    // })
-    // .then(response => {
-    //   if (response.ok) {
-    //     return response;
-    //   } else {
-    //     let errorMessage = `${response.status} (${response.statusText})`,
-    //      error = new Error(errorMessage);
-    //     throw(error);
-    //   }
-    // })
-    // .catch(error => console.error(`Error in fetch: ${error.message}`));
+    debugger
+    fetch('/api/v1/albums', {
+      credentials: 'same-origin',
+      method: 'POST',
+      headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json'
+       },
+      body: JSON.stringify(formPayload)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+         error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   handleFormSubmit(event) {
     event.preventDefault()
     let formPayload = {
-      albumName: this.state.albumName,
-      albumSongs: this.state.albumSongs,
+      name: this.state.albumName,
+      albumSongs: this.state.albumSongs
     }
+
     this.addNewAlbum(formPayload)
   }
 
   handleNameChange(event) {
-    this.setState({ albumName: event.target.value })
     console.log(this.state.albumName)
+    this.setState({ albumName: event.target.value })
   }
 
   handleSongsChange(event) {
     let currentSongs = this.state.albumSongs
     let newSongs = currentSongs.concat(event.target.value)
-    this.setState({ albumSongs: newSongs})
     console.log(this.state.albumSongs)
+    this.setState({ albumSongs: newSongs})
   }
 
   render() {
