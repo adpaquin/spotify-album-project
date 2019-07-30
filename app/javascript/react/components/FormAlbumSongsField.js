@@ -5,7 +5,8 @@ class FormAlbumSongsField extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      albums: []
+      albums: [],
+      songs: []
     }
   }
 
@@ -27,45 +28,35 @@ class FormAlbumSongsField extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  render() {
-    let albums = this.state.albums.map(album => {
 
-      let songs = album.songs.map(song => {
+    render() {
+      let albums = this.state.albums.map(album => {
+
+        let songs = album.songs.map(song => {
+          return (
+            <option key={song.id}>
+              {song.name}
+            </option>
+          )
+        })
+
         return (
-          <option key={song.id}>
-            {song.name}
-          </option>
+          <div key={album.id}>
+          {album.artist_name} - {album.name}
+            <select>
+              {songs}
+            </select>
+          </div>
         )
       })
 
-      return (
-        <div key={album.id}>
-        {album.artist_name} - {album.name}
-          <select>
-            {songs}
-          </select>
+
+      return(
+        <div onChange={this.props.handlerFunction}>
+          {albums}
         </div>
       )
-    })
-
-
-    return(
-      <div>
-        {albums}
-      </div>
-    )
-  }
+    }
 }
 
 export default FormAlbumSongsField
-
-
-
-
-
-
-
-
-// <AlbumSelectTile
-// songs={album.songs}
-// />

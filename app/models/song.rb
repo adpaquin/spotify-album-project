@@ -19,7 +19,6 @@ class Song < ApplicationRecord
 
   def self.add(album)
     @new_songs_arr = []
-
     album.tracks_cache.each do |song|
       name = song.name
       duration = song.duration_ms

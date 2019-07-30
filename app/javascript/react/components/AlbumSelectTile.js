@@ -2,10 +2,21 @@ import React from 'react'
 
 const AlbumSelectTile = (props) => {
   // debugger
-  return(
 
+  let songs = props.songs.map(song => {
+    return(
+      <option key={song.id} onChange={props.handlerFunction}>
+        {song.name}
+      </option>
+    )
+  })
+
+  return(
     <div>
-      {props.songs.name}
+    {props.albumName}
+      <select>
+        {songs}
+      </select>
     </div>
   )
 

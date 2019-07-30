@@ -1,7 +1,7 @@
 require 'rspotify'
 
 class Album < ApplicationRecord
-  validates :artist_name, presence: true
+  # validates :artist_name, presence: true
   validates :name, presence: true
   validates :acousticness_average, presence: true
   validates :danceability_average, presence: true
@@ -36,6 +36,7 @@ class Album < ApplicationRecord
                 tempo_average: tempo_average)
   end
 
+
   def self.acousticness_average(album)
     sum = 0.0
     counter = 0.0
@@ -54,7 +55,6 @@ class Album < ApplicationRecord
         counter += 1
       end
       return (sum * 100 / counter)
-
     end
 
     def self.energy_average(album)
@@ -96,5 +96,52 @@ class Album < ApplicationRecord
       end
       return (sum / counter)
     end
+
+
+
+
+    def self.add_new(name, new_song_arr, url)
+      name = name
+      url = url
+      counter = 0.0
+
+      acousticness_sum = 0.0
+      danceability_sum = 0.0
+      energy_sum = 0.0
+      instrumentalness_sum = 0.0
+      liveness_sum = 0.0
+      tempo_sum = 0.0
+
+
+      new_song_arr.each do |song|
+
+        acousticness_sum += song[0].acousticness
+        danceability_sum += song[0].danceability
+        energy_sum += song[0].energy
+        instrumentalness_sum += song[0].instrumentalness
+        liveness_sum += song[0].liveness
+        tempo_sum += song[0].tempo
+        counter += 1
+      end
+
+      acousticness_average = acousticness_sum / counter
+      danceability_average = danceability_sum / counter
+      energy_average = energy_sum / counter
+      instrumentalness_average = instrumentalness_sum / counter
+      liveness_average = liveness_sum / counter
+      tempo_average = tempo_sum / counter
+
+
+      Album.create(
+                  name: name,
+                  cover_image: url,
+                  acousticness_average: acousticness_average,
+                  danceability_average: danceability_average,
+                  energy_average: energy_average,
+                  instrumentalness_average: instrumentalness_average,
+                  liveness_average: liveness_average,
+                  tempo_average: tempo_average)
+    end
+
 
 end
