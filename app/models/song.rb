@@ -1,4 +1,5 @@
 require 'rspotify'
+require_relative 'playlist'
 
 class Song < ApplicationRecord
   validates :name, presence: true
@@ -11,11 +12,13 @@ class Song < ApplicationRecord
   validates :liveness, presence: true
   validates :tempo, presence: true
 
-  belongs_to :album
+  has_many :playlists
+  has_many :albums, through: :playlists
 
-  def self.add(album, new_album)
-    album_id = new_album.id
+  attr_accessor :new_songs_arr
+  @new_songs_arr = []
 
+  def self.add(album)
     album.tracks_cache.each do |song|
       name = song.name
       duration = song.duration_ms
@@ -28,8 +31,7 @@ class Song < ApplicationRecord
       tempo = song.audio_features.tempo
 
 
-      Song.create(album_id: album_id,
-                  name: name,
+      new_song = Song.create(name: name,
                   duration: duration,
                   track_number: track_number,
                   acousticness: acousticness,
@@ -38,23 +40,17 @@ class Song < ApplicationRecord
                   instrumentalness: instrumentalness,
                   liveness: liveness,
                   tempo: tempo)
+
+    @new_songs_arr << new_song
+
+    # Playlist.add(@new_song_arr)
+    # Playlist.create(songs_id: new_song.id, albums_id: new_album.id)
+    # binding.pry
+
     end
 
+    return @new_songs_arr
   end
+
+
 end
-
-
-
-
-
-
-
-
-# acousticness = song.audio_features.acousticness
-# danceability = song.audio_features.danceability
-# energy = song.audio_features.energy
-# instrumentalness = song.audio_features.instrumentalness
-# liveness = song.audio_features.liveness
-# loudness = song.audio_features.loudness
-# speechiness = song.audio_features.speechiness
-# tempo = song.audio_features.tempo

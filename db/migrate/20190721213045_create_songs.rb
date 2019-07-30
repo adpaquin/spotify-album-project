@@ -11,8 +11,6 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.decimal :liveness, null: false
       t.decimal :tempo, null: false
 
-      t.belongs_to :album
-
       t.timestamps
     end
   end
