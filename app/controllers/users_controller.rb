@@ -12,7 +12,8 @@ class UsersController < ApplicationController
 
     albums.each do |album|
       new_album = Album.add(album)
-      Song.add(album, new_album)
+      new_songs_arr = Song.add(album)
+      Playlist.add(new_songs_arr, new_album)
     end
 
     @albums = Album.all
