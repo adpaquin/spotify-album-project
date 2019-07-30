@@ -20,7 +20,7 @@ class GraphShowContainer extends Component {
     let comaparedAlbums;
     let baseAlbum = this.state.albumInfo
 
-    fetch(`/api/v1/albums/21`)
+    fetch(`/api/v1/albums/3`)
       .then(response => {
         if(response.ok){
           return response;
