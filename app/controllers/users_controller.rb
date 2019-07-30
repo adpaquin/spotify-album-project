@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def seed
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
 
-    albums = spotify_user.saved_albums(limit: 2)
+    albums = spotify_user.saved_albums(limit: 3)
 
     albums.each do |album|
       new_album = Album.add(album)
