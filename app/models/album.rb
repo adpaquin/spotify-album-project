@@ -3,7 +3,6 @@ require 'rspotify'
 class Album < ApplicationRecord
   # validates :artist_name, presence: true
   validates :name, presence: true
-  validates :from_spotify, presence: true
   validates :acousticness_average, presence: true
   validates :danceability_average, presence: true
   validates :energy_average, presence: true
