@@ -125,44 +125,44 @@ class GraphShowContainer extends Component {
 
     return (
       <div>
-        <h1>
+        <h1 class="album-header">
           Album: {mainAlbumName}
         </h1>
-        <div>
-          Legend
+        <div className="row">
+          <div className="small-8 columns">
+          <RadarChart
+            data={this.state.albumInfo}
+            startingAngle={0}
+            width={600}
+            height={500}
+            margin={{left: 60,top: 50, bottom: 50, right: 60}}
+            tickFormat={format('.1r')}
+            style={{
+              labels: {fontSize: 17},
+              polygons: {
+                strokeWidth: 0.5,
+                strokeOpacity: 1,
+                fillOpacity: 0.1
+              }
+            }}
+            domains={[
+              {name: 'Acousticness', domain: [0, 100], getValue: d => d.acousticness_average},
+              {name: 'Danceability', domain: [0, 100], getValue: d => d.danceability_average},
+              {name: 'Energy', domain: [0, 100], getValue: d => d.energy_average},
+              {name: 'Instrumentalness', domain: [0, 100], getValue: d => d.instrumentalness_average},
+              {name: 'Liveness', domain: [0, 100], getValue: d => d.liveness_average},
+              {name: 'Tempo', domain: [50, 150], getValue: d => d.tempo_average}
+            ]}
+          />
+          </div>
+          <div className="small-4 columns">
+            <h2>Legend</h2>
+            <DiscreteColorLegend
+              height={200}
+              width={300}
+              items={items} />
+          </div>
         </div>
-        <DiscreteColorLegend
-          height={200}
-          width={300}
-          items={items} />;
-
-
-        <RadarChart
-          data={this.state.albumInfo}
-          startingAngle={0}
-          width={600}
-          height={500}
-          margin={{left: 60,top: 50, bottom: 50, right: 60}}
-          tickFormat={format('.1r')}
-          style={{
-            labels: {fontSize: 17},
-            polygons: {
-              strokeWidth: 0.5,
-              strokeOpacity: 1,
-              fillOpacity: 0.1
-            }
-          }}
-          domains={[
-            {name: 'Acousticness', domain: [0, 100], getValue: d => d.acousticness_average},
-            {name: 'Danceability', domain: [0, 100], getValue: d => d.danceability_average},
-            {name: 'Energy', domain: [0, 100], getValue: d => d.energy_average},
-            {name: 'Instrumentalness', domain: [0, 100], getValue: d => d.instrumentalness_average},
-            {name: 'Liveness', domain: [0, 100], getValue: d => d.liveness_average},
-            {name: 'Tempo', domain: [50, 150], getValue: d => d.tempo_average}
-          ]}
-        />
-
-
         <div>
           Album Songs:
           {mainAlbumSongs}
@@ -177,5 +177,3 @@ class GraphShowContainer extends Component {
 }
 
 export default GraphShowContainer
-
-// <button onClick={this.addAlbum}>Overlay Other Album</button>

@@ -15,3 +15,22 @@
  *= require foundation_and_overrides
 
  */
+
+ body {
+   font-family: 'Roboto', sans-serif;
+   background-color: #ecf0f1;
+ }
+
+.album-tile {
+  padding: 1rem;
+  text-align: center;
+}
+
+.index-header {
+  text-align: center;
+  color: #2980b9;
+}
+
+.top-bar {
+  background-color: #2c3e50;
+}

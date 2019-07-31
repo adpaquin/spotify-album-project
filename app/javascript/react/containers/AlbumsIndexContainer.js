@@ -45,13 +45,15 @@ class AlbumsIndexContainer extends Component {
 
     let albumTiles = albums.map(album => {
       return (
-        <AlbumTile
-          key={album.id}
-          id={album.id}
-          artist_name={album.artist_name}
-          name={album.name}
-          cover_image={album.cover_image}
-        />
+        <div className="album-tile">
+          <AlbumTile
+            key={album.id}
+            id={album.id}
+            artist_name={album.artist_name}
+            name={album.name}
+            cover_image={album.cover_image}
+          />
+        </div>
       )
     })
 
@@ -60,8 +62,10 @@ class AlbumsIndexContainer extends Component {
       <div>
         <Link to='/form'>Add New Album</Link>
         {signInMessage}
-        <h1>My Album Collection</h1>
-        <div>{albumTiles}</div>
+        <h1 className="index-header">My Album Collection</h1>
+        <div className="index-header">
+          {albumTiles}
+        </div>
       </div>
     )
   }
