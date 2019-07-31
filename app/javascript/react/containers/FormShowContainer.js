@@ -21,7 +21,6 @@ class FormShowContainer extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.addNewAlbum = this.addNewAlbum.bind(this)
     this.handleClearForm = this.handleClearForm.bind(this)
-    // this.validateAlbumName = this.validateAlbumName.bind(this)
 
   }
 

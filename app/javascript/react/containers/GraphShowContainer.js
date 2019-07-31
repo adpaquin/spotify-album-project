@@ -3,6 +3,7 @@ import {format} from 'd3-format';
 import {RadarChart} from 'react-vis';
 import SongTile from '../components/SongTile'
 import {DiscreteColorLegend} from 'react-vis';
+// import AlbumSelectTile from '../components/AlbumSelectTile'
 
 
 
@@ -10,17 +11,19 @@ class GraphShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      albumInfo: []
+      albumInfo: [],
+      albumTiles: []
     }
     this.addAlbum = this.addAlbum.bind(this)
+    this.showCompareableAlbums = this.showCompareableAlbums.bind(this)
   }
 
-  addAlbum() {
+  addAlbum(id) {
     let newAlbum;
     let comaparedAlbums;
     let baseAlbum = this.state.albumInfo
 
-    fetch(`/api/v1/albums/40`)
+    fetch(`/api/v1/albums/${id}`)
       .then(response => {
         if(response.ok){
           return response;
@@ -37,6 +40,25 @@ class GraphShowContainer extends Component {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
+
+
+    showCompareableAlbums() {
+      fetch(`/api/v1/albums`)
+        .then(response => {
+          if(response.ok){
+            return response;
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+            throw(error);
+          }
+        })
+        .then(response => response.json())
+        .then(body => {
+          this.setState({ albumTiles: body })
+        })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }
 
 
 
@@ -71,6 +93,15 @@ class GraphShowContainer extends Component {
     let mainAlbumSongs = []
     let items = []
 
+    let albumSelectTile = this.state.albumTiles.map(album => {
+      return(
+        <div id={album.id} onClick={ () => this.addAlbum(album.id) }>
+          <img src={album.cover_image} height="100" width="100" />
+        </div>
+
+      )
+    })
+
       if(this.state.albumInfo[0]) {
 
         mainAlbumArtist = this.state.albumInfo[0].artist_name
@@ -90,6 +121,7 @@ class GraphShowContainer extends Component {
           )
         })
       }
+
 
     return (
       <div>
@@ -114,19 +146,11 @@ class GraphShowContainer extends Component {
           tickFormat={format('.1r')}
           style={{
             labels: {fontSize: 17},
-            // textAnchor: 'middle',
             polygons: {
               strokeWidth: 0.5,
               strokeOpacity: 1,
               fillOpacity: 0.1
             }
-            // axes: {
-            //   line: {
-            //     fillOpacity: 0.8,
-            //     strokeWidth: 0.5,
-            //     strokeOpacity: 0.8
-            //   }
-            // }
           }}
           domains={[
             {name: 'Acousticness', domain: [0, 100], getValue: d => d.acousticness_average},
@@ -143,11 +167,15 @@ class GraphShowContainer extends Component {
           Album Songs:
           {mainAlbumSongs}
         </div>
+          <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
 
-        <button onClick={this.addAlbum}>Overlay Other Album</button>
+          {albumSelectTile}
+
       </div>
     );
   }
 }
 
 export default GraphShowContainer
+
+// <button onClick={this.addAlbum}>Overlay Other Album</button>

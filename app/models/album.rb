@@ -10,8 +10,8 @@ class Album < ApplicationRecord
   validates :liveness_average, presence: true
   validates :tempo_average, presence: true
 
-  has_many :playlists, :dependent => :delete_all
-  has_many :songs, through: :playlists, :dependent => :delete_all
+  has_many :playlists, :dependent => :destroy
+  has_many :songs, through: :playlists
 
   def self.add(album)
     name = album.name
