@@ -18,6 +18,7 @@ class Album < ApplicationRecord
     artist = album.artists[0].name
     cover_image = album.images[0]["url"]
 
+    from_spotify = true
     acousticness_average = Album.acousticness_average(album)
     danceability_average = Album.danceability_average(album)
     energy_average = Album.energy_average(album)
@@ -25,7 +26,8 @@ class Album < ApplicationRecord
     liveness_average = Album.liveness_average(album)
     tempo_average = Album.tempo_average(album)
 
-    Album.create(artist_name: artist,
+    Album.create(from_spotify: from_spotify,
+                artist_name: artist,
                 name: name,
                 cover_image: cover_image,
                 acousticness_average: acousticness_average,
@@ -124,6 +126,7 @@ class Album < ApplicationRecord
         counter += 1
       end
 
+      from_spotify = false
       acousticness_average = acousticness_sum / counter
       danceability_average = danceability_sum / counter
       energy_average = energy_sum / counter
@@ -132,7 +135,7 @@ class Album < ApplicationRecord
       tempo_average = tempo_sum / counter
 
 
-      Album.create(
+      Album.create(from_spotify: from_spotify,
                   name: name,
                   cover_image: url,
                   acousticness_average: acousticness_average,

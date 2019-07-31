@@ -2,12 +2,16 @@ import React, { Component } from "react"
 import { Link } from 'react-router-dom'
 import AlbumTile from '../components/AlbumTile'
 
+// let spotifyAlbums = true
+// let userAlbums = true
+
 class AlbumsIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
       albums: []
     }
+    this.handleShowSpotifyAlbums = this.handleShowSpotifyAlbums.bind(this)
   }
 
   componentDidMount() {
@@ -28,8 +32,18 @@ class AlbumsIndexContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  handleShowSpotifyAlbums() {
+
+  }
+
   render() {
-    let albumTiles = this.state.albums.map(album => {
+    // spotifyAlbums;
+    // userAlbums;
+
+    let albums = this.state.albums
+
+
+    let albumTiles = albums.map(album => {
       return (
         <AlbumTile
           key={album.id}
@@ -41,10 +55,11 @@ class AlbumsIndexContainer extends Component {
       )
     })
 
+
     return(
       <div>
-        <h1>My Albums </h1>
         <Link to='/form'>Add New Album</Link>
+        <button onClick={this.handleShowSpotifyAlbums}>Albums From Spotify</button>
         <div>{albumTiles}</div>
       </div>
     )

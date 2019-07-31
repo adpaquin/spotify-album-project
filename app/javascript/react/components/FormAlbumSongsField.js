@@ -30,12 +30,18 @@ class FormAlbumSongsField extends Component {
 
 
     render() {
-      let albums = this.state.albums.map(album => {
+      let albums = this.state.albums.filter(album => {
+          return(album.from_spotify !== false)
+        })
+
+      albums = albums.map(album => {
 
         let songs = album.songs.map(song => {
           return (
-            <option key={song.id}>
-              {song.name}
+            <option
+            key={song.id}
+            >
+            {song.name}
             </option>
           )
         })
@@ -49,6 +55,7 @@ class FormAlbumSongsField extends Component {
           </div>
         )
       })
+
 
 
       return(
