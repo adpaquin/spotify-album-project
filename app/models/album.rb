@@ -10,8 +10,13 @@ class Album < ApplicationRecord
   validates :liveness_average, presence: true
   validates :tempo_average, presence: true
 
+<<<<<<< HEAD
   has_many :playlists, :dependent => :destroy
   has_many :songs, through: :playlists
+=======
+  has_many :playlists, :dependent => :delete_all
+  has_many :songs, through: :playlists, :dependent => :delete_all
+>>>>>>> master
 
   def self.add(album)
     name = album.name
@@ -133,7 +138,6 @@ class Album < ApplicationRecord
       instrumentalness_average = instrumentalness_sum / counter
       liveness_average = liveness_sum / counter
       tempo_average = tempo_sum / counter
-
 
       Album.create(from_spotify: from_spotify,
                   name: name,
