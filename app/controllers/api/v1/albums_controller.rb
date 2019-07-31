@@ -27,6 +27,8 @@ class Api::V1::AlbumsController <ApplicationController
     new_album = Album.add_new(name, new_song_arr, url)
 
     Playlist.add_new(new_album, new_song_arr)
+
+    render json: Album.all
   end
 
   def new

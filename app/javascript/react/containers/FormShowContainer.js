@@ -10,7 +10,8 @@ class FormShowContainer extends Component {
     this.state = {
       albumName: '',
       albumSongs: [],
-      albumCoverURL: ''
+      albumCoverURL: '',
+      errors: {}
 
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -19,11 +20,12 @@ class FormShowContainer extends Component {
     this.handleURLChange = this.handleURLChange.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.addNewAlbum = this.addNewAlbum.bind(this)
+    this.handleClearForm = this.handleClearForm.bind(this)
+    // this.validateAlbumName = this.validateAlbumName.bind(this)
 
   }
 
   addNewAlbum(formPayload) {
-    debugger
     fetch('/api/v1/albums', {
       credentials: 'same-origin',
       method: 'POST',
@@ -47,13 +49,17 @@ class FormShowContainer extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault()
-    let formPayload = {
-      name: this.state.albumName,
-      albumSongs: this.state.albumSongs,
-      albumCoverURL: this.state.albumCoverURL
-    }
+      let formPayload = {
+        name: this.state.albumName,
+        albumSongs: this.state.albumSongs,
+        albumCoverURL: this.state.albumCoverURL
+      }
+      this.addNewAlbum(formPayload)
+  }
 
-    this.addNewAlbum(formPayload)
+  handleClearForm(event) {
+    event.preventDefault()
+    this.setState({ albumSongs: [] })
   }
 
   handleNameChange(event) {
@@ -74,27 +80,38 @@ class FormShowContainer extends Component {
   }
 
   render() {
+      let selectedSongs = this.state.albumSongs.map(song => {
+        return(
+          <div key={song}>
+            {song}
+          </div>
+        )
+      })
     return(
-      <form onSubmit={this.handleFormSubmit}>
-        <FormAlbumNameField
-          label="Album Name"
-          name="Album Name"
-          handlerFunction={this.handleNameChange}
-        />
-        <FormCoverArtField
-        label="Album Cover URL"
-        name="Album Cover URL"
-        handlerFunction={this.handleURLChange}
-        />
-        <FormAlbumSongsField
-          label="Songs"
-          name="Songs"
-          handlerFunction={this.handleSongsChange}
-        />
-        <div>
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
+      <div>
+        Selected Songs: {selectedSongs}
+        <form onSubmit={this.handleFormSubmit}>
+          <FormAlbumNameField
+            label="Album Name"
+            name="Album Name"
+            handlerFunction={this.handleNameChange}
+          />
+          <FormCoverArtField
+          label="Album Cover URL"
+          name="Album Cover URL"
+          handlerFunction={this.handleURLChange}
+          />
+          <FormAlbumSongsField
+            label="Songs"
+            name="Songs"
+            handlerFunction={this.handleSongsChange}
+          />
+          <div>
+            <input type="submit" value="Submit" />
+            <button onClick={this.handleClearForm}>Clear</button>
+          </div>
+        </form>
+      </div>
     )
   }
 

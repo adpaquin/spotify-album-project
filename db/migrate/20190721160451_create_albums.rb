@@ -1,6 +1,8 @@
 class CreateAlbums < ActiveRecord::Migration[5.2]
   def change
     create_table :albums do |t|
+
+      t.boolean :from_spotify, null: false
       t.string :artist_name
       t.string :name, null: false
       t.text :cover_image

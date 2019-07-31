@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_193504) do
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
+    t.boolean "from_spotify", null: false
     t.string "artist_name"
     t.string "name", null: false
     t.text "cover_image"

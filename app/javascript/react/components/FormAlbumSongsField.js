@@ -30,12 +30,16 @@ class FormAlbumSongsField extends Component {
 
 
     render() {
-      let albums = this.state.albums.map(album => {
+      let albums;
+      let songs;
 
-        let songs = album.songs.map(song => {
+      albums = this.state.albums.map(album => {
+        songs = album.songs.map(song => {
           return (
-            <option key={song.id}>
-              {song.name}
+            <option
+            key={song.id}
+            >
+            {song.name}
             </option>
           )
         })
@@ -43,12 +47,13 @@ class FormAlbumSongsField extends Component {
         return (
           <div key={album.id}>
           {album.artist_name} - {album.name}
-            <select>
-              {songs}
-            </select>
+          <select>
+          {songs}
+          </select>
           </div>
         )
       })
+
 
 
       return(
