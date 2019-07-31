@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'users#albums'
   devise_for :users
   # , controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
