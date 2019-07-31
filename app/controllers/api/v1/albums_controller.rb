@@ -3,7 +3,7 @@ require_relative '../../application_controller'
 
 class Api::V1::AlbumsController <ApplicationController
   protect_from_forgery
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
 
 

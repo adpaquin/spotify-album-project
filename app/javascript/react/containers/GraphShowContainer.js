@@ -3,7 +3,7 @@ import {format} from 'd3-format';
 import {RadarChart} from 'react-vis';
 import SongTile from '../components/SongTile'
 import {DiscreteColorLegend} from 'react-vis';
-import AlbumSelectTile from '../components/AlbumSelectTile'
+// import AlbumSelectTile from '../components/AlbumSelectTile'
 
 
 
@@ -19,7 +19,6 @@ class GraphShowContainer extends Component {
   }
 
   addAlbum(id) {
-    // let id = 40
     let newAlbum;
     let comaparedAlbums;
     let baseAlbum = this.state.albumInfo
@@ -96,7 +95,7 @@ class GraphShowContainer extends Component {
 
     let albumSelectTile = this.state.albumTiles.map(album => {
       return(
-        <div onClick={ () => this.addAlbum(album.id) }>
+        <div id={album.id} onClick={ () => this.addAlbum(album.id) }>
           <img src={album.cover_image} height="100" width="100" />
         </div>
 

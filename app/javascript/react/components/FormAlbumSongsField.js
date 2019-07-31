@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AlbumSelectTile from './AlbumSelectTile'
+// import AlbumSelectTile from './AlbumSelectTile'
 
 class FormAlbumSongsField extends Component {
   constructor(props) {
