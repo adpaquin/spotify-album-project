@@ -9,6 +9,7 @@ export const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/" component={AlbumsIndexContainer} />
         <Route exact path="/albums" component={AlbumsIndexContainer} />
         <Route exact path="/albums/:id" component={GraphShowContainer} />
         <Route exact path="/form" component={FormShowContainer} />
