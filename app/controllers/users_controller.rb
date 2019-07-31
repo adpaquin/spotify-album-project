@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end
 
     @albums = Album.all
+    redirect_to "/albums"
   end
 
   def albums

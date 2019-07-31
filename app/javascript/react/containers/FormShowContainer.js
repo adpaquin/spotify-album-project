@@ -59,23 +59,20 @@ class FormShowContainer extends Component {
 
   handleClearForm(event) {
     event.preventDefault()
-    this.setState({ albumSongs: [] })
+    this.setState({ albumSongs: [], albumName: '', albumCoverURL: '' })
   }
 
   handleNameChange(event) {
-    console.log(this.state.albumName)
     this.setState({ albumName: event.target.value })
   }
 
   handleURLChange(event) {
-    console.log(this.state.albumCoverURL)
     this.setState({ albumCoverURL: event.target.value })
   }
 
   handleSongsChange(event) {
     let currentSongs = this.state.albumSongs
     let newSongs = currentSongs.concat(event.target.value)
-    console.log(this.state.albumSongs)
     this.setState({ albumSongs: newSongs})
   }
 

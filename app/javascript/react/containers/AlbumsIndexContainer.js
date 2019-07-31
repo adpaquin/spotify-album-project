@@ -11,11 +11,12 @@ class AlbumsIndexContainer extends Component {
     this.state = {
       albums: []
     }
-    this.handleShowSpotifyAlbums = this.handleShowSpotifyAlbums.bind(this)
   }
 
   componentDidMount() {
-    fetch('/api/v1/albums')
+    fetch('/api/v1/albums', {
+      credentials: 'same-origin'
+    })
     .then(response => {
       if (response.ok) {
         return response
@@ -32,15 +33,14 @@ class AlbumsIndexContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  handleShowSpotifyAlbums() {
-
-  }
 
   render() {
-    // spotifyAlbums;
-    // userAlbums;
-
+    let signInMessage = ""
     let albums = this.state.albums
+
+    if(albums.length == 0) {
+      signInMessage = "No albums to show! Please sign in and link to your Spotify account"
+    }
 
 
     let albumTiles = albums.map(album => {
@@ -59,7 +59,8 @@ class AlbumsIndexContainer extends Component {
     return(
       <div>
         <Link to='/form'>Add New Album</Link>
-        <button onClick={this.handleShowSpotifyAlbums}>Albums From Spotify</button>
+        {signInMessage}
+        <h1>My Album Collection</h1>
         <div>{albumTiles}</div>
       </div>
     )

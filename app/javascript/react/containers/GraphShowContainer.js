@@ -20,7 +20,7 @@ class GraphShowContainer extends Component {
     let comaparedAlbums;
     let baseAlbum = this.state.albumInfo
 
-    fetch(`/api/v1/albums/3`)
+    fetch(`/api/v1/albums/40`)
       .then(response => {
         if(response.ok){
           return response;
@@ -43,7 +43,9 @@ class GraphShowContainer extends Component {
 
   componentDidMount(){
     let albumId = this.props.match.params.id
-    fetch(`/api/v1/albums/${albumId}`)
+    fetch(`/api/v1/albums/${albumId}`, {
+        credentials: 'same-origin'
+      })
       .then(response => {
         if(response.ok){
           return response;
@@ -70,6 +72,7 @@ class GraphShowContainer extends Component {
     let items = []
 
       if(this.state.albumInfo[0]) {
+
         mainAlbumArtist = this.state.albumInfo[0].artist_name
         mainAlbumName = this.state.albumInfo[0].name
 
@@ -91,9 +94,11 @@ class GraphShowContainer extends Component {
     return (
       <div>
         <h1>
-          {mainAlbumArtist} - {mainAlbumName}
+          Album: {mainAlbumName}
         </h1>
-
+        <div>
+          Legend
+        </div>
         <DiscreteColorLegend
           height={200}
           width={300}
