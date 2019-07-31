@@ -12,8 +12,8 @@ class Song < ApplicationRecord
   validates :liveness, presence: true
   validates :tempo, presence: true
 
-  has_many :playlists
-  has_many :albums, through: :playlists
+  has_many :playlists, :dependent => :delete_all
+  has_many :albums, through: :playlists, :dependent => :delete_all
 
   attr_accessor :new_songs_arr
 
