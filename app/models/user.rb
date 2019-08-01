@@ -6,4 +6,5 @@ class User < ApplicationRecord
          # , :omniauthable,
          # omniauth_providers: ["spotify"]
 
+  has_many :albums
 end

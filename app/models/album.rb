@@ -10,10 +10,11 @@ class Album < ApplicationRecord
   validates :liveness_average, presence: true
   validates :tempo_average, presence: true
 
+  belongs_to :user
   has_many :playlists, :dependent => :delete_all
   has_many :songs, through: :playlists, :dependent => :delete_all
 
-  def self.add(album)
+  def self.add(album, user)
     name = album.name
     artist = album.artists[0].name
     cover_image = album.images[0]["url"]
@@ -26,7 +27,8 @@ class Album < ApplicationRecord
     liveness_average = Album.liveness_average(album)
     tempo_average = Album.tempo_average(album)
 
-    Album.create(from_spotify: from_spotify,
+    Album.create(user: user,
+                from_spotify: from_spotify,
                 artist_name: artist,
                 name: name,
                 cover_image: cover_image,
@@ -36,6 +38,7 @@ class Album < ApplicationRecord
                 instrumentalness_average: instrumentalness_average,
                 liveness_average: liveness_average,
                 tempo_average: tempo_average)
+
   end
 
 
@@ -102,9 +105,10 @@ class Album < ApplicationRecord
 
 
 
-    def self.add_new(name, new_song_arr, url)
+    def self.add_new(name, new_song_arr, url, user)
       name = name
       url = url
+      user = user
       counter = 0.0
 
       acousticness_sum = 0.0
@@ -134,7 +138,8 @@ class Album < ApplicationRecord
       liveness_average = liveness_sum / counter
       tempo_average = tempo_sum / counter
 
-      Album.create(from_spotify: from_spotify,
+      Album.create(user: user,
+                  from_spotify: from_spotify,
                   name: name,
                   cover_image: url,
                   acousticness_average: acousticness_average,

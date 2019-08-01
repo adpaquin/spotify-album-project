@@ -9,9 +9,10 @@ class UsersController < ApplicationController
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
 
     albums = spotify_user.saved_albums(limit: 3)
+    user = current_user
 
     albums.each do |album|
-      new_album = Album.add(album)
+      new_album = Album.add(album, user)
       new_songs_arr = Song.add(album)
       Playlist.add(new_songs_arr, new_album)
     end
