@@ -58,7 +58,7 @@ class AlbumsIndexContainer extends Component {
 
     return(
       <div>
-        <Link to='/form'>Add New Album</Link>
+        <Link to='/albums/new'>Add New Album</Link>
         {signInMessage}
         <h1>My Album Collection</h1>
         <div>{albumTiles}</div>
