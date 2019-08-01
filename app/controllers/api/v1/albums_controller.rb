@@ -25,7 +25,8 @@ class Api::V1::AlbumsController <ApplicationController
       new_song_arr << Song.where(name: song)
     end
 
-    new_album = Album.add_new(name, new_song_arr, url)
+    user = current_user
+    new_album = Album.add_new(name, new_song_arr, url, user)
 
     Playlist.add_new(new_album, new_song_arr)
 
