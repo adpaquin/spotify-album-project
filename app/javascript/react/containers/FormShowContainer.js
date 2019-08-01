@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import FormAlbumNameField from '../components/FormAlbumNameField'
 import FormAlbumSongsField from '../components/FormAlbumSongsField'
 import FormCoverArtField from '../components/FormCoverArtField'
-
+import {
+  withRouter
+} from 'react-router-dom'
 
 class FormShowContainer extends Component {
   constructor(props) {
@@ -42,6 +44,9 @@ class FormShowContainer extends Component {
          error = new Error(errorMessage);
         throw(error);
       }
+    })
+    .then(response => {
+      this.props.history.push("/")
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }

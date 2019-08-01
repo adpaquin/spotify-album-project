@@ -11,8 +11,8 @@ export const App = (props) => {
       <Switch>
         <Route exact path="/" component={AlbumsIndexContainer} />
         <Route exact path="/albums" component={AlbumsIndexContainer} />
+        <Route exact path="/albums/new" component={FormShowContainer} />
         <Route exact path="/albums/:id" component={GraphShowContainer} />
-        <Route exact path="/form" component={FormShowContainer} />
       </Switch>
     </BrowserRouter>
   )

@@ -1,10 +1,9 @@
 require_relative '../../application_controller'
 
 
-class Api::V1::AlbumsController <ApplicationController
-  protect_from_forgery
+class Api::V1::AlbumsController <ApiController
   before_action :authenticate_user!
-
+  skip_before_action :verify_authenticity_token
 
 
   def index
@@ -16,7 +15,6 @@ class Api::V1::AlbumsController <ApplicationController
   end
 
   def create
-    binding.pry
     name = params[:name]
     songs = params[:albumSongs]
     url = params[:albumCoverURL]
@@ -31,12 +29,7 @@ class Api::V1::AlbumsController <ApplicationController
 
     Playlist.add_new(new_album, new_song_arr)
 
-    redirect_to '/albums'
-
-  end
-
-  def new
-
+    render json: Album.all
   end
 
 end
