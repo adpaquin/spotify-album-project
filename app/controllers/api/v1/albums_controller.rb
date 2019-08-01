@@ -1,10 +1,9 @@
 require_relative '../../application_controller'
 
 
-class Api::V1::AlbumsController <ApplicationController
-  protect_from_forgery
-  # before_action :authenticate_user!
-
+class Api::V1::AlbumsController <ApiController
+  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
 
   def index
@@ -25,16 +24,12 @@ class Api::V1::AlbumsController <ApplicationController
       new_song_arr << Song.where(name: song)
     end
 
-    new_album = Album.add_new(name, new_song_arr, url)
+    user = current_user
+    new_album = Album.add_new(name, new_song_arr, url, user)
 
     Playlist.add_new(new_album, new_song_arr)
 
-    redirect_to '/albums'
-
-  end
-
-  def new
-
+    render json: Album.all
   end
 
 end

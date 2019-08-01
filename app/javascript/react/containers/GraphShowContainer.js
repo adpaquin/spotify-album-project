@@ -96,7 +96,7 @@ class GraphShowContainer extends Component {
     let albumSelectTile = this.state.albumTiles.map(album => {
       return(
         <div id={album.id} onClick={ () => this.addAlbum(album.id) }>
-          <img src={album.cover_image} height="100" width="100" />
+          <img src={album.cover_image} height="200" width="200" />
         </div>
 
       )
@@ -115,7 +115,7 @@ class GraphShowContainer extends Component {
         mainAlbumSongs = this.state.albumInfo[0].songs.map(song => {
           return (
             <SongTile
-            key={song.id}
+            key={song.name}
             songName={song.name}
             />
           )
