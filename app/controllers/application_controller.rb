@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
     albums_path
   end
 
-  # protect_from_forgery unless: -> { request.format.json? }
+  protect_from_forgery unless: -> { request.format.json? }
   protect_from_forgery with: :exception
 end

@@ -26,7 +26,7 @@ class FormShowContainer extends Component {
 
   addNewAlbum(formPayload) {
     fetch('/api/v1/albums', {
-      credentials: 'same-origin',
+      credentials: "same-origin",
       method: 'POST',
       headers: {
          'Accept': 'application/json',

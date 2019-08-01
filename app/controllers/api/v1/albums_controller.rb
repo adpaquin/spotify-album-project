@@ -3,7 +3,7 @@ require_relative '../../application_controller'
 
 class Api::V1::AlbumsController <ApplicationController
   protect_from_forgery
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
 
 
@@ -16,6 +16,7 @@ class Api::V1::AlbumsController <ApplicationController
   end
 
   def create
+    binding.pry
     name = params[:name]
     songs = params[:albumSongs]
     url = params[:albumCoverURL]

@@ -4,6 +4,7 @@ require_relative '../models/album'
 require_relative '../models/song'
 
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def seed
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
