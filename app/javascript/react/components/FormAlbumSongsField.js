@@ -38,16 +38,14 @@ class FormAlbumSongsField extends Component {
 
         let songs = album.songs.map(song => {
           return (
-            <option
-            key={song.id}
-            >
+            <option key={song.id}>
             {song.name}
             </option>
           )
         })
 
         return (
-          <div key={album.id}>
+          <div key={album.id} value={this.props.albumSongs}>
           {album.artist_name} - {album.name}
             <select>
               {songs}
