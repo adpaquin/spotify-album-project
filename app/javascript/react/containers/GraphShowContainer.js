@@ -17,6 +17,7 @@ class GraphShowContainer extends Component {
     }
     this.addAlbum = this.addAlbum.bind(this)
     this.showCompareableAlbums = this.showCompareableAlbums.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   addAlbum(id) {
@@ -62,6 +63,30 @@ class GraphShowContainer extends Component {
     }
 
 
+    handleDelete() {
+      let albumId = this.props.match.params.id
+      fetch(`/api/v1/albums/${albumId}`, {
+        credentials: "same-origin",
+        method: 'DELETE',
+        headers: {
+           'Accept': 'application/json',
+           'Content-Type': 'application/json'
+         },
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+           error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => {
+        this.props.history.push("/")
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }
 
 
   componentDidMount(){
@@ -95,6 +120,7 @@ class GraphShowContainer extends Component {
     let mainAlbumSongs = []
     let items = []
     let baseId = this.state.albumBaseId
+    let deleteButton;
 
     let albumSelectTile = this.state.albumTiles.filter(album => {
         return(album.id !== baseId)
@@ -127,7 +153,16 @@ class GraphShowContainer extends Component {
             />
           )
         })
+        if(this.state.albumInfo[0].from_spotify == false) {
+          deleteButton = <button onClick={this.handleDelete}>Delete Album</button>
+        }
+        else {
+          deleteButton = <div></div>
+        }
       }
+
+
+
 
 
     return (
@@ -135,6 +170,7 @@ class GraphShowContainer extends Component {
         <h1 className="album-header">
           Album: {mainAlbumName}
         </h1>
+          {deleteButton}
         <div className="row">
           <div className="small-8 columns">
           <RadarChart
@@ -184,3 +220,8 @@ class GraphShowContainer extends Component {
 }
 
 export default GraphShowContainer
+
+
+
+
+// <button onClick={this.handleDelete}>Delete Album</button>
