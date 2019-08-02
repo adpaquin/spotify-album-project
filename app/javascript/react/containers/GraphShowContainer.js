@@ -12,7 +12,8 @@ class GraphShowContainer extends Component {
     super(props)
     this.state = {
       albumInfo: [],
-      albumTiles: []
+      albumTiles: [],
+      albumBaseId: ''
     }
     this.addAlbum = this.addAlbum.bind(this)
     this.showCompareableAlbums = this.showCompareableAlbums.bind(this)
@@ -104,7 +105,8 @@ class GraphShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ albumInfo: [body] })
+        let albumBaseId = body.id
+        this.setState({ albumInfo: [body], albumBaseId: albumBaseId })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -117,9 +119,13 @@ class GraphShowContainer extends Component {
     let mainAlbumName = ''
     let mainAlbumSongs = []
     let items = []
-    let deleteButton;
+    let baseId = this.state.albumBaseId
 
-    let albumSelectTile = this.state.albumTiles.map(album => {
+    let albumSelectTile = this.state.albumTiles.filter(album => {
+        return(album.id !== baseId)
+    })
+
+      albumSelectTile = albumSelectTile.map(album => {
       return(
         <div id={album.id} onClick={ () => this.addAlbum(album.id) }>
           <img src={album.cover_image} height="200" width="200" />
@@ -141,7 +147,7 @@ class GraphShowContainer extends Component {
         mainAlbumSongs = this.state.albumInfo[0].songs.map(song => {
           return (
             <SongTile
-            key={song.name}
+            key={song.id}
             songName={song.name}
             />
           )
