@@ -5,6 +5,7 @@ const FormAlbumNameField = (props) => {
     <label> {props.label}
       <textarea
         onChange={props.handlerFunction}
+        value={props.value}
       />
     </label>
   )

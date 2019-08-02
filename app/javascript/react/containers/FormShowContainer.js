@@ -96,16 +96,19 @@ class FormShowContainer extends Component {
             label="Album Name"
             name="Album Name"
             handlerFunction={this.handleNameChange}
+            value={this.state.albumName}
           />
           <FormCoverArtField
-          label="Album Cover URL"
-          name="Album Cover URL"
-          handlerFunction={this.handleURLChange}
+            label="Album Cover URL"
+            name="Album Cover URL"
+            handlerFunction={this.handleURLChange}
+            value={this.state.albumCoverURL}
           />
           <FormAlbumSongsField
             label="Songs"
             name="Songs"
             handlerFunction={this.handleSongsChange}
+            value={this.state.albumSongs}
           />
           <div>
             <input type="submit" value="Submit" />
