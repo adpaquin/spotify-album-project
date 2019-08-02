@@ -120,6 +120,7 @@ class GraphShowContainer extends Component {
     let mainAlbumSongs = []
     let items = []
     let baseId = this.state.albumBaseId
+    let deleteButton;
 
     let albumSelectTile = this.state.albumTiles.filter(album => {
         return(album.id !== baseId)
@@ -152,7 +153,16 @@ class GraphShowContainer extends Component {
             />
           )
         })
+        if(this.state.albumInfo[0].from_spotify == false) {
+          deleteButton = <button onClick={this.handleDelete}>Delete Album</button>
+        }
+        else {
+          deleteButton = <div></div>
+        }
       }
+
+
+
 
 
     return (
@@ -160,7 +170,7 @@ class GraphShowContainer extends Component {
         <h1 className="album-header">
           Album: {mainAlbumName}
         </h1>
-        <button onClick={this.handleDelete}>Delete Album</button>
+          {deleteButton}
         <div className="row">
           <div className="small-8 columns">
           <RadarChart
@@ -210,3 +220,8 @@ class GraphShowContainer extends Component {
 }
 
 export default GraphShowContainer
+
+
+
+
+// <button onClick={this.handleDelete}>Delete Album</button>
