@@ -155,22 +155,22 @@ class GraphShowContainer extends Component {
             ]}
           />
           </div>
-          <div className="small-4 columns">
-            <h2>Legend</h2>
+          <div className="small-2 columns">
+            <h2 className="titles">Legend</h2>
             <DiscreteColorLegend
               height={200}
               width={300}
               items={items} />
           </div>
-        </div>
-        <div>
-          Album Songs:
-          {mainAlbumSongs}
+          <div className="small-2 columns">
+            <h2 className="titles"> Album Songs:</h2>
+            {mainAlbumSongs}
+          </div>
         </div>
           <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
-
-          {albumSelectTile}
-
+          <div className="selectable-albums">
+            {albumSelectTile}
+          </div>
       </div>
     );
   }
