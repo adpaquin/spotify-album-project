@@ -95,7 +95,6 @@ class GraphShowContainer extends Component {
     let mainAlbumSongs = []
     let items = []
     let baseId = this.state.albumBaseId
-    // debugger
 
     let albumSelectTile = this.state.albumTiles.filter(album => {
         return(album.id !== baseId)
@@ -123,7 +122,7 @@ class GraphShowContainer extends Component {
         mainAlbumSongs = this.state.albumInfo[0].songs.map(song => {
           return (
             <SongTile
-            key={song.name}
+            key={song.id}
             songName={song.name}
             />
           )
@@ -133,7 +132,7 @@ class GraphShowContainer extends Component {
 
     return (
       <div>
-        <h1 class="album-header">
+        <h1 className="album-header">
           Album: {mainAlbumName}
         </h1>
         <div className="row">
