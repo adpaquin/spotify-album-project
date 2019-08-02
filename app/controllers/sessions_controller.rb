@@ -3,8 +3,10 @@ class SessionsController < ApplicationController
   def create
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
 
-    albums = spotify_user.saved_albums(limit: 20)
+    albums = spotify_user.saved_albums(limit: 5)
     user = current_user
+
+    session[:spotify_linked] = true
 
     albums.each do |album|
       new_album = Album.add(album, user)
@@ -13,8 +15,6 @@ class SessionsController < ApplicationController
     end
 
     # if the user has saved the songs and albums to their playlist in the past, then we shouldnt do it again
-
-    session[:spotify_linked] = true
 
     @albums = Album.all
 

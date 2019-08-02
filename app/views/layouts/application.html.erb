@@ -24,9 +24,9 @@
 
     <section class="top-bar-section">
       <ul class="right">
-        <%- if current_user && session[:spotify_user] -%>
+        <%- if current_user && session[:spotify_linked] -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>\
-        <% elsif current_user && !session[:spotify_user] -%>
+        <% elsif current_user && !session[:spotify_linked] -%>
           <li><%= link_to 'Link to Spotify', '/auth/spotify' %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
