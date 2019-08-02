@@ -18,6 +18,7 @@ class GraphShowContainer extends Component {
     this.addAlbum = this.addAlbum.bind(this)
     this.showCompareableAlbums = this.showCompareableAlbums.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.clearGraph = this.clearGraph.bind(this)
   }
 
   addAlbum(id) {
@@ -86,6 +87,11 @@ class GraphShowContainer extends Component {
         this.props.history.push("/")
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }
+
+    clearGraph() {
+      let baseGraph = this.state.albumInfo[0]
+      this.setState({ albumInfo: [baseGraph] })
     }
 
 
@@ -171,6 +177,9 @@ class GraphShowContainer extends Component {
           Album: {mainAlbumName}
         </h1>
           {deleteButton}
+        <div>
+        <button onClick={this.clearGraph}>Clear Graph</button>
+        </div>
         <div className="row">
           <div className="small-8 columns">
           <RadarChart
