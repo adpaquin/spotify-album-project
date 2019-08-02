@@ -63,9 +63,7 @@ class AlbumsIndexContainer extends Component {
         <Link to='/albums/new'>Add New Album</Link>
         {signInMessage}
         <h1 className="index-header">My Album Collection</h1>
-        <div className="index-header">
           {albumTiles}
-        </div>
       </div>
     )
   }
