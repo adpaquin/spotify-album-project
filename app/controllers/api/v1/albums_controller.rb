@@ -32,4 +32,11 @@ class Api::V1::AlbumsController <ApiController
     render json: Album.all
   end
 
+  def destroy
+    album = Album.find(params[:id])
+    album.destroy
+
+    render json: Album.all
+  end
+
 end
