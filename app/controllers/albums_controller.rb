@@ -8,7 +8,11 @@ class AlbumsController < ApplicationController
      # Album.find(params[:id])
   end
 
-  def new
+  def create
+
+  end
+
+  def destroy
 
   end
 

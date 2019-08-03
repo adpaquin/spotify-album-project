@@ -29,14 +29,14 @@ class Api::V1::AlbumsController <ApiController
 
     Playlist.add_new(new_album, new_song_arr)
 
-    render json: Album.all
+    render json: Album.where(user: current_user)
   end
 
   def destroy
     album = Album.find(params[:id])
     album.destroy
 
-    render json: Album.all
+    render json: Album.where(user: current_user)
   end
 
 end
