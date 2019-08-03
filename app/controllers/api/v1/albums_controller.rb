@@ -7,7 +7,7 @@ class Api::V1::AlbumsController <ApiController
 
 
   def index
-    render json: Album.all
+    render json: Album.where(user: current_user)
   end
 
   def show
