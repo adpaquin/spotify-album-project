@@ -5,6 +5,12 @@ import SongTile from '../components/SongTile'
 import {DiscreteColorLegend} from 'react-vis';
 // import AlbumSelectTile from '../components/AlbumSelectTile'
 
+const energyText = "Intensity and Activity"
+const daceabilityText = "Combination of rhythm stability, beat strength, and overall regularity"
+const acousticnessText = "Acoustic value"
+const tempoText = "Beats per minute (BPM)"
+const livenessText = "Probability the album was performed live"
+const instrumentalnessText = "Measure of how instrumental the album is"
 
 
 class GraphShowContainer extends Component {
@@ -118,9 +124,6 @@ class GraphShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-
-
-
   render() {
     let mainAlbumArtist = ''
     let mainAlbumName = ''
@@ -128,6 +131,7 @@ class GraphShowContainer extends Component {
     let items = []
     let baseId = this.state.albumBaseId
     let deleteButton;
+
 
     let albumSelectTile = this.state.albumTiles.filter(album => {
         return(album.id !== baseId)
@@ -223,6 +227,24 @@ class GraphShowContainer extends Component {
           <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
           <div className="selectable-albums">
             {albumSelectTile}
+          </div>
+          <div>
+            {energyText}
+          </div>
+          <div>
+            {daceabilityText}
+          </div>
+          <div>
+            {acousticnessText}
+          </div>
+          <div>
+            {tempoText}
+          </div>
+          <div>
+            {livenessText}
+          </div>
+          <div>
+            {instrumentalnessText}
           </div>
       </div>
     );
