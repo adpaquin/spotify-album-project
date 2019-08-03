@@ -2,9 +2,6 @@ import React, { Component } from "react"
 import { Link } from 'react-router-dom'
 import AlbumTile from '../components/AlbumTile'
 
-// let spotifyAlbums = true
-// let userAlbums = true
-
 class AlbumsIndexContainer extends Component {
   constructor(props) {
     super(props)

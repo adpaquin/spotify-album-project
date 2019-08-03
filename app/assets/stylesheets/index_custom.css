@@ -1,0 +1,42 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+.album-tile {
+ padding: 1rem;
+ text-align: center;
+ width: 20%;
+ display:inline-block;
+}
+
+.album-tile:hover {
+ padding: 1rem;
+ text-align: center;
+ width: 20%;
+ display:inline-block;
+ background-color: black;
+
+}
+
+.index-header {
+ color: #2980b9;
+ padding: 1rem;
+}
+
+.top-bar {
+ background-color: #2c3e50;
+}
+
+.album-show-tile {
+ padding: .1em;
+}
+
+h2 {
+ font-size: 1.2em;
+}
+
+h1.album-header {
+ padding: .5em;
+}

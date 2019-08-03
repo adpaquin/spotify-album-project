@@ -226,11 +226,11 @@ class GraphShowContainer extends Component {
           />
           <button onClick={this.clearGraph}>Clear Graph</button>
           </div>
-          <div className="">
+          <div className="details">
             <h2 className="titles album-info">Album Info:</h2>
             {descriptionTextTiles}
           </div>
-          <div className="">
+          <div className="details">
             <h2 className="titles"> Album Songs:</h2>
             {mainAlbumSongs}
           </div>
@@ -238,7 +238,7 @@ class GraphShowContainer extends Component {
           <div>
             <DiscreteColorLegend
               height={100}
-              width={400}
+              width={200}
               items={items} />
           </div>
           <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
