@@ -3,15 +3,17 @@ import {format} from 'd3-format';
 import {RadarChart} from 'react-vis';
 import SongTile from '../components/SongTile'
 import {DiscreteColorLegend} from 'react-vis';
-// import AlbumSelectTile from '../components/AlbumSelectTile'
+import TextTile from '../components/TextTile'
 
-const energyText = "Intensity and Activity"
-const daceabilityText = "Combination of rhythm stability, beat strength, and overall regularity"
-const acousticnessText = "Acoustic value"
-const tempoText = "Beats per minute (BPM)"
-const livenessText = "Probability the album was performed live"
-const instrumentalnessText = "Measure of how instrumental the album is"
 
+const descriptionText = [
+  'Energy: Intensity and Activity',
+  'Danceability: Intensity and Activity',
+  'Acousticness: rhythm stability, beat strength, and overall regularity',
+  'Tempo: Beats per minute (BPM)',
+  'Liveness: Probability the album was performed live',
+  'Instrumentalness: How instrumental the album is'
+]
 
 class GraphShowContainer extends Component {
   constructor(props) {
@@ -172,6 +174,14 @@ class GraphShowContainer extends Component {
         }
       }
 
+      let descriptionTextTiles = descriptionText.map( text => {
+        return (
+          <TextTile
+            key={text}
+            text={text}
+          />
+        )
+      })
 
 
 
@@ -183,23 +193,22 @@ class GraphShowContainer extends Component {
         </h1>
           {deleteButton}
         <div>
-        <button onClick={this.clearGraph}>Clear Graph</button>
         </div>
-        <div className="row">
-          <div className="small-8 columns">
+        <div className="container">
+          <div className="graph">
           <RadarChart
             data={this.state.albumInfo}
             startingAngle={0}
             width={600}
             height={500}
-            margin={{left: 60,top: 50, bottom: 50, right: 60}}
+            margin={{left: 100}, {right: 50}}
             tickFormat={format('.1r')}
             style={{
               labels: {fontSize: 17},
               polygons: {
                 strokeWidth: 0.5,
                 strokeOpacity: 1,
-                fillOpacity: 0.1
+                fillOpacity: 0.2
               }
             }}
             domains={[
@@ -211,40 +220,26 @@ class GraphShowContainer extends Component {
               {name: 'Tempo', domain: [50, 150], getValue: d => d.tempo_average}
             ]}
           />
+          <button onClick={this.clearGraph}>Clear Graph</button>
           </div>
-          <div className="small-2 columns">
-            <h2 className="titles">Legend</h2>
-            <DiscreteColorLegend
-              height={200}
-              width={300}
-              items={items} />
+          <div className="">
+            <h2 className="titles album-info">Album Info:</h2>
+            {descriptionTextTiles}
           </div>
-          <div className="small-2 columns">
+          <div className="">
             <h2 className="titles"> Album Songs:</h2>
             {mainAlbumSongs}
           </div>
         </div>
+          <div>
+            <DiscreteColorLegend
+              height={100}
+              width={400}
+              items={items} />
+          </div>
           <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
           <div className="selectable-albums">
-            {albumSelectTile}
-          </div>
-          <div>
-            {energyText}
-          </div>
-          <div>
-            {daceabilityText}
-          </div>
-          <div>
-            {acousticnessText}
-          </div>
-          <div>
-            {tempoText}
-          </div>
-          <div>
-            {livenessText}
-          </div>
-          <div>
-            {instrumentalnessText}
+          {albumSelectTile}
           </div>
       </div>
     );
