@@ -35,11 +35,15 @@ class AlbumsIndexContainer extends Component {
 
 
   render() {
+    let newAlbumLink;
     let signInMessage = ""
     let albums = this.state.albums
 
     if(albums.length == 0) {
       signInMessage = "No albums to show! Please sign in and link to your Spotify account"
+    }
+    else {
+      newAlbumLink = <Link to='/albums/new'>Add New Album</Link>
     }
 
 
@@ -60,7 +64,9 @@ class AlbumsIndexContainer extends Component {
 
     return(
       <div>
-        <Link to='/albums/new'>Add New Album</Link>
+        <div>
+          {newAlbumLink}
+        </div>
         {signInMessage}
         <h1 className="index-header">My Album Collection</h1>
           {albumTiles}
