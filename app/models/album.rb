@@ -14,93 +14,97 @@ class Album < ApplicationRecord
   has_many :playlists, :dependent => :delete_all
   has_many :songs, through: :playlists, :dependent => :delete_all
 
-  def self.add(album, user)
-    name = album.name
-    artist = album.artists[0].name
-    cover_image = album.images[0]["url"]
-
-    from_spotify = true
-    acousticness_average = Album.acousticness_average(album)
-    danceability_average = Album.danceability_average(album)
-    energy_average = Album.energy_average(album)
-    instrumentalness_average = Album.instrumentalness_average(album)
-    liveness_average = Album.liveness_average(album)
-    tempo_average = Album.tempo_average(album)
-
-    Album.create(user: user,
-                from_spotify: from_spotify,
-                artist_name: artist,
-                name: name,
-                cover_image: cover_image,
-                acousticness_average: acousticness_average,
-                danceability_average: danceability_average,
-                energy_average: energy_average,
-                instrumentalness_average: instrumentalness_average,
-                liveness_average: liveness_average,
-                tempo_average: tempo_average)
-
-  end
-
-
-  def self.acousticness_average(album)
-    sum = 0.0
-    counter = 0.0
-    album.tracks_cache.each do |song|
-      sum += song.audio_features.acousticness
-      counter += 1
-    end
-    return (sum * 100 / counter)
-  end
-
-    def self.danceability_average(album)
-      sum = 0.0
-      counter = 0.0
-      album.tracks_cache.each do |song|
-        sum += song.audio_features.danceability
-        counter += 1
-      end
-      return (sum * 100 / counter)
-    end
-
-    def self.energy_average(album)
-      sum = 0.0
-      counter = 0.0
-      album.tracks_cache.each do |song|
-        sum += song.audio_features.energy
-        counter += 1
-      end
-      return (sum * 100 / counter)
-    end
-
-    def self.instrumentalness_average(album)
-      sum = 0.0
-      counter = 0.0
-      album.tracks_cache.each do |song|
-        sum += song.audio_features.instrumentalness
-        counter += 1
-      end
-      return (sum * 100 / counter)
-    end
-
-    def self.liveness_average(album)
-      counter = 0.0
-      sum = 0.0
-      album.tracks_cache.each do |song|
-        sum += song.audio_features.liveness
-        counter += 1
-      end
-      return (sum * 100 / counter)
-    end
-
-    def self.tempo_average(album)
-      sum = 0.0
-      counter = 0.0
-      album.tracks_cache.each do |song|
-        sum += song.audio_features.tempo
-        counter += 1
-      end
-      return (sum / counter)
-    end
+  # def self.add(album, user)
+  #   ## create new album here album.new()
+  #   # @album = new Album();
+  #
+  #   name = album.name
+  #   artist = album.artists[0].name
+  #   cover_image = album.images[0]["url"]
+  #
+  #   from_spotify = true
+  #
+  #   acousticness_average = Album.acousticness_average(album)
+  #   danceability_average = Album.danceability_average(album)
+  #   energy_average = Album.energy_average(album)
+  #   instrumentalness_average = Album.instrumentalness_average(album)
+  #   liveness_average = Album.liveness_average(album)
+  #   tempo_average = Album.tempo_average(album)
+  #
+  #   Album.create(user: user,
+  #               from_spotify: from_spotify,
+  #               artist_name: artist,
+  #               name: name,
+  #               cover_image: cover_image,
+  #               acousticness_average: acousticness_average,
+  #               danceability_average: danceability_average,
+  #               energy_average: energy_average,
+  #               instrumentalness_average: instrumentalness_average,
+  #               liveness_average: liveness_average,
+  #               tempo_average: tempo_average)
+  #
+  # end
+  #
+  #
+  # def self.acousticness_average(album)
+  #   sum = 0.0
+  #   counter = 0.0
+  #   album.tracks_cache.each do |song|
+  #     sum += song.audio_features.acousticness
+  #     counter += 1
+  #   end
+  #   return (sum * 100 / counter)
+  # end
+  #
+  #   def self.danceability_average(album)
+  #     sum = 0.0
+  #     counter = 0.0
+  #     album.tracks_cache.each do |song|
+  #       sum += song.audio_features.danceability
+  #       counter += 1
+  #     end
+  #     return (sum * 100 / counter)
+  #   end
+  #
+  #   def self.energy_average(album)
+  #     sum = 0.0
+  #     counter = 0.0
+  #     album.tracks_cache.each do |song|
+  #       sum += song.audio_features.energy
+  #       counter += 1
+  #     end
+  #     return (sum * 100 / counter)
+  #   end
+  #
+  #   def self.instrumentalness_average(album)
+  #     sum = 0.0
+  #     counter = 0.0
+  #     album.tracks_cache.each do |song|
+  #       sum += song.audio_features.instrumentalness
+  #       counter += 1
+  #     end
+  #     return (sum * 100 / counter)
+  #   end
+  #
+  #   def self.liveness_average(album)
+  #     counter = 0.0
+  #     sum = 0.0
+  #     album.tracks_cache.each do |song|
+  #       sum += song.audio_features.liveness
+  #       counter += 1
+  #     end
+  #     return (sum * 100 / counter)
+  #   end
+  #
+  #   def self.tempo_average(album)
+  #     sum = 0.0
+  #     counter = 0.0
+  #     album.tracks_cache.each do |song|
+  #       sum += song.audio_features.tempo
+  #       counter += 1
+  #     end
+  #     return (sum / counter)
+  #   end
 
 
 

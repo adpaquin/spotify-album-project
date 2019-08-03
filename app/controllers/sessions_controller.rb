@@ -1,3 +1,5 @@
+require_relative '../models/albumcreator'
+
 class SessionsController < ApplicationController
 
   def create
@@ -9,14 +11,8 @@ class SessionsController < ApplicationController
     session[:spotify_linked] = true
 
     albums.each do |album|
-      new_album = Album.add(album, user)
-      new_songs_arr = Song.add(album)
-      Playlist.add(new_songs_arr, new_album)
+      AlbumCreator.add(album, user)
     end
-
-    # if the user has saved the songs and albums to their playlist in the past, then we shouldnt do it again
-
-    @albums = Album.all
 
      redirect_to '/'
   end
@@ -27,3 +23,6 @@ class SessionsController < ApplicationController
     request.env['omniauth.auth']
   end
 end
+
+
+# if the user has saved the songs and albums to their playlist in the past, then we shouldnt do it again
