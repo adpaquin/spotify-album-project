@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import FormAlbumNameField from '../components/FormAlbumNameField'
 import FormAlbumSongsField from '../components/FormAlbumSongsField'
 import FormCoverArtField from '../components/FormCoverArtField'
-import {
-  withRouter
-} from 'react-router-dom'
+import {withRouterm} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 class FormShowContainer extends Component {
   constructor(props) {
@@ -90,6 +90,9 @@ class FormShowContainer extends Component {
       })
     return(
       <div>
+        <Link to='/albums'>
+          <div className="button">Back</div>
+        </Link>
         Selected Songs: {selectedSongs}
         <form onSubmit={this.handleFormSubmit}>
           <FormAlbumNameField

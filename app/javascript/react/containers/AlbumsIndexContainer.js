@@ -43,7 +43,7 @@ class AlbumsIndexContainer extends Component {
       signInMessage = "No albums to show! Please sign in and link to your Spotify account"
     }
     else {
-      newAlbumLink = <Link to='/albums/new'>Add New Album</Link>
+      newAlbumLink = <Link to='/albums/new'><div className="button">Create New Album</div></Link>
     }
 
 

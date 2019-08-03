@@ -4,6 +4,7 @@ import {RadarChart} from 'react-vis';
 import SongTile from '../components/SongTile'
 import {DiscreteColorLegend} from 'react-vis';
 import TextTile from '../components/TextTile'
+import {Link} from 'react-router-dom'
 
 
 const descriptionText = [
@@ -188,6 +189,9 @@ class GraphShowContainer extends Component {
 
     return (
       <div>
+        <Link to='/albums'>
+          <div className="button">Back</div>
+        </Link>
         <h1 className="album-header">
           Album: {mainAlbumName}
         </h1>
