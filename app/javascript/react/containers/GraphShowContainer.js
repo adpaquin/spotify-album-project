@@ -24,7 +24,7 @@ class GraphShowContainer extends Component {
   addAlbum(id) {
     let newAlbum;
     let comaparedAlbums;
-    let baseAlbum = this.state.albumInfo
+    let baseAlbum = [this.state.albumInfo[0]]
 
     fetch(`/api/v1/albums/${id}`)
       .then(response => {
@@ -38,7 +38,8 @@ class GraphShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        comaparedAlbums = baseAlbum.concat([body])
+
+        comaparedAlbums = baseAlbum.concat(body)
         this.setState({ albumInfo: comaparedAlbums })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
