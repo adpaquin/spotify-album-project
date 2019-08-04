@@ -5,6 +5,7 @@ ruby '2.4.5'
 
 gem 'rspotify'
 gem 'active_model_serializers'
+gem 'activerecord-import', '~> 0.15.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record

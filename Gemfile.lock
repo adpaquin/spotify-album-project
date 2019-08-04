@@ -38,6 +38,8 @@ GEM
       activemodel (= 5.2.3)
       activesupport (= 5.2.3)
       arel (>= 9.0)
+    activerecord-import (0.15.0)
+      activerecord (>= 3.2)
     activestorage (5.2.3)
       actionpack (= 5.2.3)
       activerecord (= 5.2.3)
@@ -268,6 +270,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  activerecord-import (~> 0.15.0)
   bootsnap (>= 1.1.0)
   capybara
   database_cleaner
@@ -297,4 +300,4 @@ RUBY VERSION
    ruby 2.4.5p335
 
 BUNDLED WITH
-   2.0.1
+   2.0.2

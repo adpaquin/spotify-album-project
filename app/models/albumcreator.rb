@@ -1,3 +1,5 @@
+# require activerecord-import
+
 class AlbumCreator
 
 def self.add(album, user)
@@ -15,7 +17,7 @@ def self.add(album, user)
   album_liveness = 0.0
   album_tempo = 0.0
 
-  @new_songs_arr = []
+  new_songs_arr = []
 
   album.tracks_cache.each do |song|
     name = song.name
@@ -28,7 +30,7 @@ def self.add(album, user)
     liveness = song.audio_features.liveness * 100
     tempo = song.audio_features.tempo
 
-      new_song = Song.create(name: name,
+      new_songs_arr << Song.new(name: name,
                   duration: duration,
                   track_number: track_number,
                   acousticness: acousticness,
@@ -45,9 +47,9 @@ def self.add(album, user)
       album_liveness += song.audio_features.liveness * 100
       album_tempo += song.audio_features.tempo
 
-      @new_songs_arr << new_song
-
     end
+
+    Song.import new_songs_arr
 
     album_acousticness_average = album_acousticness / album_length
     album_danceability_average = album_danceability / album_length
@@ -70,7 +72,7 @@ def self.add(album, user)
                           tempo_average: album_tempo_average
                           )
 
-      @new_songs_arr.each do |song|
+      new_songs_arr.each do |song|
         Playlist.create(album_id: new_album.id, song_id: song.id)
       end
 
