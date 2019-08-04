@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-// import AlbumSelectTile from './AlbumSelectTile'
 
 class FormAlbumSongsField extends Component {
   constructor(props) {
     super(props)
     this.state = {
       albums: [],
-      songs: []
     }
   }
 
@@ -44,10 +42,12 @@ class FormAlbumSongsField extends Component {
           )
         })
 
+
         return (
           <div key={album.id} value={this.props.albumSongs}>
           {album.artist_name} - {album.name}
             <select>
+              <option disabled>Select a Song</option>
               {songs}
             </select>
           </div>
