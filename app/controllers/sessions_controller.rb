@@ -10,6 +10,13 @@ class SessionsController < ApplicationController
 
     session[:spotify_linked] = true
 
+    current_saved_albums = Album.where(user: user)
+    current_saved_albums.each do |current_album|
+      if current_album.from_spotify == true
+        current_album.destroy
+      end
+    end
+
     albums.each do |album|
       AlbumCreator.add(album, user)
     end
