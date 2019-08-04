@@ -199,13 +199,14 @@ class GraphShowContainer extends Component {
         <div>
         </div>
         <div className="container">
-          <div className="graph">
+          <div className="item graph">
           <RadarChart
+            className={"chart"}
             data={this.state.albumInfo}
             startingAngle={0}
-            width={600}
+            width={700}
             height={500}
-            margin={{left: 100}, {right: 50}}
+            margin={{left: 100}, {right: 100}}
             tickFormat={format('.1r')}
             style={{
               labels: {fontSize: 17},
@@ -224,13 +225,12 @@ class GraphShowContainer extends Component {
               {name: 'Tempo', domain: [50, 150], getValue: d => d.tempo_average}
             ]}
           />
-          <button onClick={this.clearGraph}>Clear Graph</button>
           </div>
-          <div className="details">
+          <div className="item album-info">
             <h2 className="titles album-info">Album Info:</h2>
             {descriptionTextTiles}
           </div>
-          <div className="details">
+          <div className="item album-songs">
             <h2 className="titles"> Album Songs:</h2>
             {mainAlbumSongs}
           </div>
@@ -241,6 +241,7 @@ class GraphShowContainer extends Component {
               width={200}
               items={items} />
           </div>
+          <button onClick={this.clearGraph}>Clear Graph</button>
           <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
           <div className="selectable-albums">
           {albumSelectTile}
