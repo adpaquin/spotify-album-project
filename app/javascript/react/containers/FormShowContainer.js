@@ -4,6 +4,8 @@ import FormAlbumSongsField from '../components/FormAlbumSongsField'
 import FormCoverArtField from '../components/FormCoverArtField'
 import {withRouterm} from 'react-router-dom'
 import { Link } from 'react-router-dom'
+// import Dropzone from 'react-dropzone';
+
 
 
 class FormShowContainer extends Component {
@@ -13,6 +15,7 @@ class FormShowContainer extends Component {
       albumName: '',
       albumSongs: [],
       albumCoverURL: '',
+      files: [],
       errors: {}
 
     }
@@ -26,17 +29,18 @@ class FormShowContainer extends Component {
     this.validateName = this.validateName.bind(this)
     this.validateURL = this.validateURL.bind(this)
     this.validateSongs = this.validateSongs.bind(this)
+    this.onDrop = this.onDrop.bind(this)
   }
 
-  addNewAlbum(formPayload) {
+  addNewAlbum(body) {
     fetch('/api/v1/albums', {
       credentials: "same-origin",
       method: 'POST',
       headers: {
          'Accept': 'application/json',
-         'Content-Type': 'application/json'
+         // 'Content-Type': 'application/json'
        },
-      body: JSON.stringify(formPayload)
+      body: body
     })
     .then(response => {
       if (response.ok) {
@@ -55,16 +59,40 @@ class FormShowContainer extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault()
+
     if(this.validateName(this.state.albumName) &&
       this.validateURL(this.state.albumCoverURL) &&
       this.validateSongs(this.state.albumSongs)) {
-      let formPayload = {
-        name: this.state.albumName,
-        albumSongs: this.state.albumSongs,
-        albumCoverURL: this.state.albumCoverURL
-      }
-      this.addNewAlbum(formPayload)
+
+      // let formPayload = {
+      //   name: this.state.albumName,
+      //   albumSongs: this.state.albumSongs,
+      //   albumCoverURL: this.state.albumCoverURL
+      // }
+
+
+      let body = new FormData()
+        body.append("name", this.state.albumName)
+        body.append("albumSongs", this.state.albumSongs)
+        body.append("photo", this.state.files[0])
+        
+      this.addNewAlbum(body)
     }
+  }
+
+
+  // onDrop(files) {
+  //   debugger
+  //   if(files.length == 1) {
+  //     this.setState({ files: files })
+  //   } else {
+  //     this.setState({ message: 'You can only upload one photo per board game.'})
+  //   }
+  // }
+
+
+  onDrop(event) {
+    this.setState({ files: event.target.files})
   }
 
   handleClearForm(event) {
@@ -176,6 +204,12 @@ class FormShowContainer extends Component {
             handlerFunction={this.handleSongsChange}
             value={this.state.albumSongs}
           />
+
+
+
+          <input type="file" onChange={this.onDrop} />
+
+
           <input type="submit" value="Submit" />
           <button onClick={this.handleClearForm}>Clear</button>
         </form>

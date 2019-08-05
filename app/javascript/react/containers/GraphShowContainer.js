@@ -142,6 +142,7 @@ class GraphShowContainer extends Component {
     let items = []
     let baseId = this.state.albumBaseId
     let deleteButton;
+    let cover_art;
 
 
     let albumSelectTile = this.state.albumTiles.filter(album => {
@@ -149,9 +150,18 @@ class GraphShowContainer extends Component {
     })
 
       albumSelectTile = albumSelectTile.map(album => {
+
+        if(album.from_spotify == true) {
+          cover_art = album.cover_image
+        }
+        else {
+          cover_art = album.cover_art.url
+        }
+
+
       return(
         <div className="single-album" key={album.id} onClick={ () => this.addAlbum(album.id) }>
-          <img src={album.cover_image} height="200" width="200" />
+          <img src={cover_art} height="200" width="200" />
         </div>
 
       )
