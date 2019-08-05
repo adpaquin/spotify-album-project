@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { Link } from 'react-router-dom'
 import AlbumTile from '../components/AlbumTile'
+import AlbumTileUser from '../components/AlbumTileUser'
+
 
 class AlbumsIndexContainer extends Component {
   constructor(props) {
@@ -76,12 +78,12 @@ class AlbumsIndexContainer extends Component {
     let albumTiles_user = user_albums.map(album => {
       return (
         <div className="album-tile">
-          <AlbumTile
+          <AlbumTileUser
             key={album.id}
             id={album.id}
             artist_name={album.artist_name}
             name={album.name}
-            cover_image={album.cover_image}
+            cover_image={album.cover_art.url}
           />
         </div>
       )

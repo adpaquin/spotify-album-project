@@ -17,15 +17,18 @@ class Api::V1::AlbumsController <ApiController
   def create
     name = params[:name]
     songs = params[:albumSongs]
-    url = params[:albumCoverURL]
+    photo = params[:photo]
+
+    new_songs = songs.split(',')
+
     new_song_arr = []
 
-    songs.each do |song|
+    new_songs.each do |song|
       new_song_arr << Song.where(name: song)
     end
 
     user = current_user
-    new_album = Album.add_new(name, new_song_arr, url, user)
+    new_album = Album.add_new(name, new_song_arr, user, photo)
 
     Playlist.add_new(new_album, new_song_arr)
 

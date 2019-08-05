@@ -12,6 +12,7 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
       t.decimal :instrumentalness_average, null: false
       t.decimal :liveness_average, null: false
       t.decimal :tempo_average, null: false
+      t.string :cover_art
       t.belongs_to :user
 
       t.timestamps
