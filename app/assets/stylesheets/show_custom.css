@@ -1,12 +1,7 @@
-.selectable-albums {
- display: flex;
-}
-
 .container {
   border: 1px solid blue;
   display: flex;
   flex-direction: row;
-
 }
 
 .item {
@@ -33,6 +28,24 @@
   flex-basis: 25%;
 
 }
+
+.selectable-albums {
+ display: flex;
+ border: 1px solid green;
+ justify-content: center;
+}
+
+
+.single-album {
+  padding: 1em;
+}
+
+.single-album:hover {
+  padding: .5em;
+  background-color: black;
+}
+
+
 
 h1.album-header {
  padding: .2em;

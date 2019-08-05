@@ -2,8 +2,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-
-
 .album-tile {
  padding: 1rem;
  text-align: center;
@@ -35,4 +33,5 @@ body {
 
 h2 {
  font-size: 1.2em;
+ color: #2980b9;
 }

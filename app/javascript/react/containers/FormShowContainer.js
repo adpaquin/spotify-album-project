@@ -150,11 +150,13 @@ class FormShowContainer extends Component {
       })
     return(
       <div>
+
         <Link to='/albums'>
           <div className="button">Back</div>
         </Link>
-        Selected Songs: {selectedSongs}
-        <form onSubmit={this.handleFormSubmit}>
+
+      <div className="form-container">
+        <form className="form" onSubmit={this.handleFormSubmit}>
           {errorDiv}
           <FormAlbumNameField
             label="Album Name"
@@ -174,11 +176,15 @@ class FormShowContainer extends Component {
             handlerFunction={this.handleSongsChange}
             value={this.state.albumSongs}
           />
-          <div>
-            <input type="submit" value="Submit" />
-            <button onClick={this.handleClearForm}>Clear</button>
-          </div>
+          <input type="submit" value="Submit" />
+          <button onClick={this.handleClearForm}>Clear</button>
         </form>
+
+        <div className="select-songs">
+          <h2 className="songs-header">Selected Songs:</h2>
+          {selectedSongs}
+          </div>
+        </div>
       </div>
     )
   }

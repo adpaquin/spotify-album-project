@@ -3,7 +3,7 @@ import React from "react"
 const AlbumTile = props => {
   return(
     <div>
-      {props.songName}
+      {props.counter}. {props.songName}
     </div>
   )
 }

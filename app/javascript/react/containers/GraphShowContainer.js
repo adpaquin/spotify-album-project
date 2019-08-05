@@ -16,6 +16,14 @@ const descriptionText = [
   'Instrumentalness: How instrumental the album is'
 ]
 
+const tipStyle = {
+  display: 'flex',
+  color: '#fff',
+  background: '#000',
+  alignItems: 'center',
+  padding: '5px'
+};
+
 class GraphShowContainer extends Component {
   constructor(props) {
     super(props)
@@ -142,7 +150,7 @@ class GraphShowContainer extends Component {
 
       albumSelectTile = albumSelectTile.map(album => {
       return(
-        <div id={album.id} onClick={ () => this.addAlbum(album.id) }>
+        <div className="single-album" key={album.id} onClick={ () => this.addAlbum(album.id) }>
           <img src={album.cover_image} height="200" width="200" />
         </div>
 
@@ -155,15 +163,17 @@ class GraphShowContainer extends Component {
         mainAlbumName = this.state.albumInfo[0].name
 
       items = this.state.albumInfo.map(album => {
-        return (album.name)
+        return {title: album.name}
       })
 
-
+      let counter = 0;
         mainAlbumSongs = this.state.albumInfo[0].songs.map(song => {
+          counter += 1
           return (
             <SongTile
             key={song.id}
             songName={song.name}
+            counter={counter}
             />
           )
         })
@@ -211,9 +221,9 @@ class GraphShowContainer extends Component {
             style={{
               labels: {fontSize: 17},
               polygons: {
-                strokeWidth: 0.5,
+                strokeWidth: 0.7,
                 strokeOpacity: 1,
-                fillOpacity: 0.2
+                fillOpacity: 0.3
               }
             }}
             domains={[
@@ -225,6 +235,12 @@ class GraphShowContainer extends Component {
               {name: 'Tempo', domain: [50, 150], getValue: d => d.tempo_average}
             ]}
           />
+          <DiscreteColorLegend
+            height={100}
+            width={200}
+            orientation={'horizontal'}
+            items={items} />
+          <button onClick={this.clearGraph}>Clear Graph</button>
           </div>
           <div className="item album-info">
             <h2 className="titles album-info">Album Info:</h2>
@@ -236,12 +252,7 @@ class GraphShowContainer extends Component {
           </div>
         </div>
           <div>
-            <DiscreteColorLegend
-              height={100}
-              width={200}
-              items={items} />
           </div>
-          <button onClick={this.clearGraph}>Clear Graph</button>
           <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
           <div className="selectable-albums">
           {albumSelectTile}
