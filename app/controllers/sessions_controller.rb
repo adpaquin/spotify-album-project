@@ -19,7 +19,6 @@ class SessionsController < ApplicationController
 
     albums.each do |album|
       AlbumCreator.add(album, user)
-      sleep 5
     end
 
 
