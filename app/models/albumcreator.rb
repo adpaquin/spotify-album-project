@@ -20,7 +20,7 @@ def self.add(album, user)
   new_songs_arr = []
 
   album.tracks_cache.each do |song|
-    sleep 0.2
+    sleep 0.1
     name = song.name
     duration = song.duration_ms
     track_number = song.track_number
