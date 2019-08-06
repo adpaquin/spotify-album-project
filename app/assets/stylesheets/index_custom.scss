@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Red Hat Display', sans-serif;
 }
 
 .album-tile {
@@ -7,15 +7,13 @@ body {
  text-align: center;
  width: 20%;
  display:inline-block;
-}
-
-.album-tile:hover {
- padding: 1rem;
- text-align: center;
- width: 20%;
- display:inline-block;
- background-color: black;
-
+  &:hover{
+    padding: 1rem;
+    text-align: center;
+    width: 20%;
+    display:inline-block;
+    background-color: black;
+  }
 }
 
 .index-header {
