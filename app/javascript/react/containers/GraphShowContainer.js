@@ -164,8 +164,8 @@ class GraphShowContainer extends Component {
         mainAlbumArtist = this.state.albumInfo[0].artist_name
         mainAlbumName = this.state.albumInfo[0].name
 
-        const legendColor1 = "#393e46"
-        const legendColor2 = "#00adb5"
+        const legendColor1 = "#384259"
+        const legendColor2 = "#f73859"
         let legendColorCounter = 0
         let legendColor;
 
@@ -210,8 +210,8 @@ class GraphShowContainer extends Component {
         )
       })
 
-      const color1 = "#393e46"
-      const color2 = "#00adb5"
+      const color1 = "#384259"
+      const color2 = "#f73859"
 
       let color;
       let colorCounter = 0
@@ -251,6 +251,7 @@ class GraphShowContainer extends Component {
             startingAngle={0}
             width={700}
             height={600}
+            view-box={0, 0, 600, 700}
             margin={{left: 0}, {right: 0}}
             tickFormat={format('.1r')}
             style={{
@@ -277,7 +278,7 @@ class GraphShowContainer extends Component {
           <button onClick={this.clearGraph}>Clear Graph</button>
           </div>
           <div className="item album-info">
-            <h2 className="titles album-info">Album Info:</h2>
+            <h2 className="titles">Album Info:</h2>
             {descriptionTextTiles}
           </div>
           <div className="item album-songs">

@@ -13,9 +13,11 @@
 }
 
 .chart {
-  display: block;
-  overflow: visible;
-  margin: auto auto;
+  // display: block;
+  // overflow: visible;
+  // margin: auto auto;
+  // viewBox: 0, 0, 50, 50;
+  // background-color: blue;
 }
 
 .album-info {
@@ -54,12 +56,20 @@
 
 h1.album-header {
  padding: .2em;
+ color: #f73859;
 }
 
 button {
-  background-color: #00adb5;
+  background-color: #384259;
+  border-radius: 5px;
 }
 
 .button {
-  background-color: #00adb5;
+  background-color: #384259;
+  border-radius: 5px;
+}
+
+h2.titles {
+  color: #f73859;
+  font-size: 1.2em;
 }
