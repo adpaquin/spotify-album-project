@@ -164,8 +164,22 @@ class GraphShowContainer extends Component {
         mainAlbumArtist = this.state.albumInfo[0].artist_name
         mainAlbumName = this.state.albumInfo[0].name
 
+        const legendColor1 = "red"
+        const legendColor2 = "blue"
+        let legendColorCounter = 0
+        let legendColor;
+
       items = this.state.albumInfo.map(album => {
-        return {title: album.name}
+        if(legendColorCounter == 0) {
+          legendColor = legendColor1
+        }
+        else {
+          legendColor = legendColor2
+        }
+
+        legendColorCounter += 1
+
+        return {title: album.name, color: legendColor}
       })
 
       let counter = 0;
@@ -196,7 +210,25 @@ class GraphShowContainer extends Component {
         )
       })
 
+      const color1 = "red"
+      const color2 = "blue"
+
+      let color;
+      let colorCounter = 0
+
       let data = this.state.albumInfo
+      let colorData = data.map(data => {
+        if(colorCounter == 0) {
+          color = color1
+        }
+        else {
+          color = color2
+        }
+        colorCounter += 1
+        return(
+          data["color"] = color
+        )
+      })
 
 
 
@@ -224,7 +256,7 @@ class GraphShowContainer extends Component {
             style={{
               labels: {fontSize: 20},
               polygons: {
-                strokeWidth: 0.9,
+                strokeWidth: 0,
                 strokeOpacity: 1,
                 fillOpacity: 0.4
               },

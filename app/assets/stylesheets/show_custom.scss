@@ -36,11 +36,12 @@
  display: flex;
  border: 1px solid green;
  justify-content: center;
+ box-sizing: border-box;
 }
 
 
 .single-album {
-  padding: 1em;
+  padding: .5em;
 }
 
 .single-album:hover {
