@@ -164,8 +164,8 @@ class GraphShowContainer extends Component {
         mainAlbumArtist = this.state.albumInfo[0].artist_name
         mainAlbumName = this.state.albumInfo[0].name
 
-        const legendColor1 = "red"
-        const legendColor2 = "blue"
+        const legendColor1 = "#393e46"
+        const legendColor2 = "#00adb5"
         let legendColorCounter = 0
         let legendColor;
 
@@ -210,8 +210,8 @@ class GraphShowContainer extends Component {
         )
       })
 
-      const color1 = "red"
-      const color2 = "blue"
+      const color1 = "#393e46"
+      const color2 = "#00adb5"
 
       let color;
       let colorCounter = 0
