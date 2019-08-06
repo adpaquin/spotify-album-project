@@ -9,20 +9,12 @@ import {Link} from 'react-router-dom'
 
 const descriptionText = [
   'Energy: Intensity and Activity',
-  'Danceability: Intensity and Activity',
+  'Danceability: tempo, rhythm stability, beat strength, and overall regularity',
   'Acousticness: rhythm stability, beat strength, and overall regularity',
   'Tempo: Beats per minute (BPM)',
   'Liveness: Probability the album was performed live',
   'Instrumentalness: How instrumental the album is'
 ]
-
-const tipStyle = {
-  display: 'flex',
-  color: '#fff',
-  background: '#000',
-  alignItems: 'center',
-  padding: '5px'
-};
 
 class GraphShowContainer extends Component {
   constructor(props) {
@@ -204,6 +196,9 @@ class GraphShowContainer extends Component {
         )
       })
 
+      let data = this.state.albumInfo
+
+
 
 
 
@@ -216,25 +211,23 @@ class GraphShowContainer extends Component {
           Album: {mainAlbumName}
         </h1>
           {deleteButton}
-        <div>
-        </div>
         <div className="container">
           <div className="item graph">
           <RadarChart
             className={"chart"}
-            data={this.state.albumInfo}
+            data={data}
             startingAngle={0}
             width={700}
-            height={500}
-            margin={{left: 100}, {right: 100}}
+            height={600}
+            margin={{left: 0}, {right: 0}}
             tickFormat={format('.1r')}
             style={{
-              labels: {fontSize: 17},
+              labels: {fontSize: 20},
               polygons: {
-                strokeWidth: 0.7,
+                strokeWidth: 0.9,
                 strokeOpacity: 1,
-                fillOpacity: 0.3
-              }
+                fillOpacity: 0.4
+              },
             }}
             domains={[
               {name: 'Acousticness', domain: [0, 100], getValue: d => d.acousticness_average},
@@ -246,8 +239,7 @@ class GraphShowContainer extends Component {
             ]}
           />
           <DiscreteColorLegend
-            height={100}
-            width={200}
+            className={"legend"}
             orientation={'horizontal'}
             items={items} />
           <button onClick={this.clearGraph}>Clear Graph</button>
@@ -261,9 +253,9 @@ class GraphShowContainer extends Component {
             {mainAlbumSongs}
           </div>
         </div>
-          <div>
+          <div className="album-show-button">
+            <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
           </div>
-          <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
           <div className="selectable-albums">
           {albumSelectTile}
           </div>

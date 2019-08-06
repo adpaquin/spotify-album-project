@@ -16,6 +16,9 @@
 
 .chart {
   display: block;
+  overflow: visible;
+  // width: 700px;
+  // height: 600px;
   margin: auto auto;
 }
 
@@ -45,7 +48,13 @@
   background-color: black;
 }
 
+.album-show-button {
+  text-align: center;
+}
 
+.legend {
+  font-size: 1em;
+}
 
 h1.album-header {
  padding: .2em;
