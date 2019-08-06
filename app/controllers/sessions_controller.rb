@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
       sleep 5
     end
 
+
      redirect_to '/'
   end
 
