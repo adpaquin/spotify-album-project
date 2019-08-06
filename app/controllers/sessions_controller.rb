@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
     albums.each do |album|
       AlbumCreator.add(album, user)
-      sleep 2
+      sleep 5
     end
 
      redirect_to '/'
