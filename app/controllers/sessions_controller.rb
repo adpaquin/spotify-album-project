@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
       AlbumCreator.add(album, user)
     end
 
+
      redirect_to '/'
   end
 
