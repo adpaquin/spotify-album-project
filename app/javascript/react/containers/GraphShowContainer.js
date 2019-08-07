@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom'
 
 const descriptionText = [
   'Energy: Intensity and Activity',
-  'Danceability: tempo, rhythm stability, beat strength, and overall regularity',
+  'Danceability: Rhythm stability, beat strength, and overall regularity',
   'Acousticness: rhythm stability, beat strength, and overall regularity',
   'Tempo: Beats per minute (BPM)',
   'Liveness: Probability the album was performed live',
@@ -239,9 +239,6 @@ class GraphShowContainer extends Component {
       })
 
 
-      // debugger
-
-
     return (
       <div>
         <Link to='/albums'>
@@ -259,7 +256,6 @@ class GraphShowContainer extends Component {
             startingAngle={0}
             width={700}
             height={600}
-            // view-box={0, 0, 600, 700}
             margin={{left: 0}, {right: 0}}
             tickFormat={format('.1r')}
             style={{
@@ -295,11 +291,11 @@ class GraphShowContainer extends Component {
           </div>
         <div className="container2 callo" >
           <div className="item album-info">
-            <h2 className="titles">Album Info:</h2>
+            <h2 className="titles">Audio Attributes</h2>
           {descriptionTextTiles}
         </div>
         <div className="item album-songs">
-          <h2 className="titles"> Album Songs:</h2>
+          <h2 className="titles"> Album Songs</h2>
           {mainAlbumSongs}
         </div>
         </div>

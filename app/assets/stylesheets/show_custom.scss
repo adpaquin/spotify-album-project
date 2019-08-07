@@ -19,6 +19,8 @@ svg:not(:root) {
 .container2 {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
+
 }
 
 .item {
@@ -28,6 +30,7 @@ svg:not(:root) {
 .chart {
   width: 100%;
   height: 100%;
+  transform: translate(2em, 0em);
 }
 
 .graph {
@@ -40,9 +43,13 @@ svg:not(:root) {
   flex-basis: 25%;
   margin: auto;
   margin-top: 0;
-  width: 30%;
+  padding-right: 0;
+  width: 60%;
   height: 30%;
   vertical-align: top;
+  flex-wrap: nowrap;
+
+
 }
 
 .album-songs {
@@ -88,6 +95,7 @@ h1.album-header {
  padding: .2em;
  color: #f95959;
  font-family: 'Roboto Slab', serif;
+ text-decoration: underline;
 }
 
 button {
@@ -112,4 +120,5 @@ h2.titles {
   color: #f95959;
   font-size: 2em;
   font-family: 'Roboto Slab', serif;
+  text-decoration: underline;
 }
