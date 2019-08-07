@@ -9,11 +9,11 @@ import {Link} from 'react-router-dom'
 
 const descriptionText = [
   'Energy: Intensity and Activity',
-  'Danceability: Rhythm stability, beat strength, and overall regularity',
-  'Acousticness: rhythm stability, beat strength, and overall regularity',
+  'Danceability: Rhythm stability and beat strength',
+  'Acousticness: Measure of overall acoustic sounds',
   'Tempo: Beats per minute (BPM)',
   'Liveness: Probability the album was performed live',
-  'Instrumentalness: How instrumental the album is'
+  'Instrumentalness: Measure of overal instrumenatl sounds'
 ]
 
 class GraphShowContainer extends Component {
@@ -283,9 +283,14 @@ class GraphShowContainer extends Component {
           </div>
 
           <div className="image-wrapper">
-            <img className="show-image" src={albumArt}/>
               <h2 className="titles">Audio Attributes</h2>
-                {descriptionTextTiles}
+                <p><span className="bold">Energy:</span> Intensity and Activity</p>
+                <p><span>Danceability:</span> Rhythm stability and beat strength</p>
+                <p><span>Acousticness:</span> Measure of overall acoustic sounds</p>
+                <p><span>Tempo:</span> Beats per minute (BPM)</p>
+                <p><span>Liveness:</span> Probability the album was performed live</p>
+                <p><span>Instrumentalness:</span> Measure of overal instrumenatl sounds</p>
+                <img className="show-image" src={albumArt}/>
           </div>
 
           <div className="item album-songs">
