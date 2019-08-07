@@ -254,13 +254,13 @@ class GraphShowContainer extends Component {
             className={"chart"}
             data={data}
             startingAngle={0}
-            width={700}
-            height={600}
+            width={500}
+            height={400}
             // viewBox={0, 0, 700, 600}
             margin={{left: 0}, {right: 0}}
             tickFormat={format('.1r')}
             style={{
-              labels: {fontSize: 20},
+              labels: {fontSize: 15},
               polygons: {
                 strokeWidth: 0,
                 strokeOpacity: 1,
