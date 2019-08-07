@@ -1,6 +1,6 @@
 .show-image {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   border-radius: 2em;
   // overflow: visible;
   // display: block;
@@ -22,10 +22,18 @@ svg.rv-xy-plot__inner {
   display: flex;
 }
 
-p { margin: .5em 0;}
+p { margin: .2em 0;}
 
 span.bold {
   color: #233142;
+}
+
+span.info-titles {
+font-size: 1.2em;
+}
+
+.titles p {
+  font-style: italic;
 }
 
 .container2 {
@@ -56,7 +64,7 @@ span.bold {
 
 
 .album-info {
-  flex-basis: 25%;
+  flex-basis: 35%;
   margin: auto;
   margin-top: 0;
   padding-right: 0;
@@ -72,7 +80,7 @@ span.bold {
 }
 
 .album-songs {
-  flex-basis: 25%;
+  flex-basis: 15%;
   margin: auto;
   margin-top: 0;
   width: 30%;
@@ -89,7 +97,6 @@ span.bold {
 }
 
 .image-wrapper {
-  padding: 1em;
 }
 
 .single-album {
@@ -123,6 +130,11 @@ h1.album-header {
  text-decoration: underline;
 }
 
+
+.rv-radar-chart {
+  width: 100%;
+}
+
 button {
   background-color: #455d7a;
   border-radius: 5px;
@@ -143,7 +155,8 @@ button {
 
 h2.titles {
   color: #f95959;
-  font-size: 2em;
+  font-size: 1.5em;
   font-family: 'Roboto Slab', serif;
   text-decoration: underline;
+  font-weight: 600;
 }

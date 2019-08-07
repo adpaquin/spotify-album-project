@@ -256,6 +256,7 @@ class GraphShowContainer extends Component {
             startingAngle={0}
             width={700}
             height={600}
+            // viewBox={0, 0, 700, 600}
             margin={{left: 0}, {right: 0}}
             tickFormat={format('.1r')}
             style={{
@@ -284,12 +285,12 @@ class GraphShowContainer extends Component {
 
           <div className="image-wrapper">
               <h2 className="titles">Audio Attributes</h2>
-                <p><span className="bold">Energy:</span> Intensity and Activity</p>
-                <p><span>Danceability:</span> Rhythm stability and beat strength</p>
-                <p><span>Acousticness:</span> Measure of overall acoustic sounds</p>
-                <p><span>Tempo:</span> Beats per minute (BPM)</p>
-                <p><span>Liveness:</span> Probability the album was performed live</p>
-                <p><span>Instrumentalness:</span> Measure of overal instrumenatl sounds</p>
+                <p><span className="info-titles">Energy:</span><span className="info-text"> Intensity and Activity</span></p>
+                <p><span className="info-titles">Danceability:</span><span className="info-text"> Rhythm stability and beat strength</span></p>
+                <p><span className="info-titles">Acousticness:</span><span className="info-text"> Measure of overall acoustic sounds</span></p>
+                <p><span className="info-titles">Tempo:</span><span className="info-text"> Beats per minute (BPM)</span></p>
+                <p><span className="info-titles">Liveness:</span><span className="info-text"> Probability the album was performed live</span></p>
+                <p><span className="info-titles">Instrumentalness:</span><span className="info-text"> Measure of overall instrumental sounds </span></p>
                 <img className="show-image" src={albumArt}/>
           </div>
 

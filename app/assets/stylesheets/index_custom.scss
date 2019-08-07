@@ -1,5 +1,6 @@
 body {
   font-family: 'Roboto Slab', serif;
+  // background-color: #e3e3e3;
 }
 
 h1.index-header {
@@ -33,6 +34,10 @@ h1.index-header {
 
 .album-show-tile {
  padding: .1em;
+}
+
+span.info-text {
+  font-style: italic;
 }
 
 h2 {
