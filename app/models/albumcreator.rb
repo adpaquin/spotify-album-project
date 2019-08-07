@@ -41,6 +41,7 @@ def self.add(album, user)
                   liveness: liveness,
                   tempo: tempo)
 
+      sleep 0.1
       album_acousticness += song.audio_features.acousticness * 100
       album_danceability += song.audio_features.danceability * 100
       album_energy += song.audio_features.energy * 100
