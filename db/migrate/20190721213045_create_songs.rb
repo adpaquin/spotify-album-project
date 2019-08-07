@@ -2,8 +2,6 @@ class CreateSongs < ActiveRecord::Migration[5.2]
   def change
     create_table :songs do |t|
       t.string :name, null: false
-      t.integer :duration, null: false
-      t.integer :track_number, null: false
       t.decimal :acousticness, null: false
       t.decimal :danceability, null: false
       t.decimal :energy, null: false
