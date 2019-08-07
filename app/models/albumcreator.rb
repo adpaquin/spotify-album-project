@@ -20,10 +20,7 @@ def self.add(album, user)
   new_songs_arr = []
 
   album.tracks_cache.each do |song|
-    sleep 0.5
     name = song.name
-    duration = song.duration_ms
-    track_number = song.track_number
     acousticness = song.audio_features.acousticness * 100
     danceability = song.audio_features.danceability * 100
     energy = song.audio_features.energy * 100
@@ -32,8 +29,6 @@ def self.add(album, user)
     tempo = song.audio_features.tempo
 
       new_songs_arr << Song.new(name: name,
-                  duration: duration,
-                  track_number: track_number,
                   acousticness: acousticness,
                   danceability: danceability,
                   energy: energy,
@@ -41,13 +36,12 @@ def self.add(album, user)
                   liveness: liveness,
                   tempo: tempo)
 
-      sleep 0.5
-      album_acousticness += song.audio_features.acousticness * 100
-      album_danceability += song.audio_features.danceability * 100
-      album_energy += song.audio_features.energy * 100
-      album_instrumentalness += song.audio_features.instrumentalness * 100
-      album_liveness += song.audio_features.liveness * 100
-      album_tempo += song.audio_features.tempo
+      album_acousticness += acousticness
+      album_danceability += danceability
+      album_energy += energy
+      album_instrumentalness += instrumentalness
+      album_liveness += liveness
+      album_tempo += tempo
 
     end
 
