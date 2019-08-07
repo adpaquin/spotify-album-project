@@ -145,31 +145,31 @@ class FormShowContainer extends Component {
       })
     return(
       <div>
-
         <Link to='/albums'>
           <div className="button">Back</div>
         </Link>
-
-      <div className="form-container">
-        <form className="form" onSubmit={this.handleFormSubmit}>
-          {errorDiv}
-          <FormAlbumNameField
-            label="Album Name"
-            name="Album Name"
-            handlerFunction={this.handleNameChange}
-            value={this.state.albumName}
-          />
-          <FormAlbumSongsField
-            label="Songs"
-            name="Songs"
-            handlerFunction={this.handleSongsChange}
-            value={this.state.albumSongs}
-          />
-          <input type="file" onChange={this.onDrop} />
-          <input type="submit" value="Submit" />
-          <button onClick={this.handleClearForm}>Clear</button>
-        </form>
-
+        <div className="form-show-container">
+          <div className="form-container">
+          <h2 className="form-header">Create a New Playlist</h2>
+          <form className="form" onSubmit={this.handleFormSubmit}>
+            {errorDiv}
+            <FormAlbumNameField
+              label="Album Name"
+              name="Album Name"
+              handlerFunction={this.handleNameChange}
+              value={this.state.albumName}
+            />
+            <FormAlbumSongsField
+              label="Songs"
+              name="Songs"
+              handlerFunction={this.handleSongsChange}
+              value={this.state.albumSongs}
+            />
+            <input type="file" onChange={this.onDrop} />
+            <button className="submit-button" type="submit">Submit</button>
+            <button className="clear-button" onClick={this.handleClearForm}>Clear</button>
+          </form>
+        </div>
         <div className="select-songs">
           <h2 className="songs-header">Selected Songs:</h2>
           {selectedSongs}

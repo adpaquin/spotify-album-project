@@ -45,7 +45,7 @@ class AlbumsIndexContainer extends Component {
       signInMessage = "No albums to show! Please sign in and link to your Spotify account"
     }
     else {
-      newAlbumLink = <Link to='/albums/new'><div className="button">Create New Album</div></Link>
+      newAlbumLink = <Link to='/albums/new'><div className="button">Create New Playlist</div></Link>
       spotifyAlbumsHeader = "My Album Collection"
     }
 
@@ -72,7 +72,7 @@ class AlbumsIndexContainer extends Component {
     })
 
     if (user_albums.length > 0) {
-      userAlbumsHeader = "My Created Albums"
+      userAlbumsHeader = "My Playlists"
     }
 
     let albumTiles_user = user_albums.map(album => {
