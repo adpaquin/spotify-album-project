@@ -159,12 +159,20 @@ class GraphShowContainer extends Component {
       )
     })
 
-      if(this.state.albumInfo[0]) {
+    let albumArt;
 
+      if(this.state.albumInfo[0]) {
         mainAlbumArtist = this.state.albumInfo[0].artist_name
         mainAlbumName = this.state.albumInfo[0].name
 
-        const legendColor1 = "#384259"
+        if(this.state.albumInfo[0].cover_image) {
+          albumArt = this.state.albumInfo[0].cover_image
+        }
+        else {
+          albumArt = this.state.albumInfo[0].cover_art["url"]
+        }
+
+        const legendColor1 = "#455d7a"
         const legendColor2 = "#f73859"
         let legendColorCounter = 0
         let legendColor;
@@ -210,7 +218,7 @@ class GraphShowContainer extends Component {
         )
       })
 
-      const color1 = "#384259"
+      const color1 = "#455d7a"
       const color2 = "#f73859"
 
       let color;
@@ -231,7 +239,7 @@ class GraphShowContainer extends Component {
       })
 
 
-
+      // debugger
 
 
     return (
@@ -251,7 +259,7 @@ class GraphShowContainer extends Component {
             startingAngle={0}
             width={700}
             height={600}
-            view-box={0, 0, 600, 700}
+            // view-box={0, 0, 600, 700}
             margin={{left: 0}, {right: 0}}
             tickFormat={format('.1r')}
             style={{
@@ -277,21 +285,24 @@ class GraphShowContainer extends Component {
             items={items} />
           <button onClick={this.clearGraph}>Clear Graph</button>
           </div>
-          <div className="item album-info">
-            <h2 className="titles">Album Info:</h2>
-            {descriptionTextTiles}
-          </div>
-          <div className="item album-songs">
-            <h2 className="titles"> Album Songs:</h2>
-            {mainAlbumSongs}
-          </div>
+          <img className="show-image" src={albumArt}/>
+        </div>
+        <div className="selectable-albums">
+          {albumSelectTile}
         </div>
           <div className="album-show-button">
             <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
           </div>
-          <div className="selectable-albums">
-          {albumSelectTile}
-          </div>
+        <div className="container2 callo" >
+          <div className="item album-info">
+            <h2 className="titles">Album Info:</h2>
+          {descriptionTextTiles}
+        </div>
+        <div className="item album-songs">
+          <h2 className="titles"> Album Songs:</h2>
+          {mainAlbumSongs}
+        </div>
+        </div>
       </div>
     );
   }

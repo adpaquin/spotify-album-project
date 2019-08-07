@@ -1,0 +1,30 @@
+.form-show-container {
+  display: flex;
+  flex-direction: row;
+  padding: 1em
+
+}
+
+.form-container {
+  flex-basis: 50%;
+}
+
+.select-songs {
+  flex-basis: 50%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.form-header {
+  text-align: center;
+  font-size: 2em;
+}
+
+.submit-button, .clear-button {
+  margin: 10px;
+  text-align: center;
+}
+
+h2.songs-header {
+  font-size: 1.65em
+}

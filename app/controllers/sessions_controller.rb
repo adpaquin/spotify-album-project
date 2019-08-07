@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
 
-    albums = spotify_user.saved_albums(limit: 5)
+    albums = spotify_user.saved_albums(limit: 20)
     user = current_user
 
     session[:spotify_linked] = true
