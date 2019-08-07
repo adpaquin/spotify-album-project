@@ -1,5 +1,5 @@
 class SongSerializer < ActiveModel::Serializer
-  attributes :id, :name, :duration, :track_number, :acousticness,
+  attributes :id, :name, :acousticness,
               :danceability, :energy, :instrumentalness,
               :liveness, :tempo
   belongs_to :album

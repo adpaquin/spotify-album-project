@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 2019_07_29_193504) do
 
   create_table "songs", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "duration", null: false
-    t.integer "track_number", null: false
     t.decimal "acousticness", null: false
     t.decimal "danceability", null: false
     t.decimal "energy", null: false

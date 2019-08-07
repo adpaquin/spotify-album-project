@@ -3,8 +3,6 @@ require_relative 'playlist'
 
 class Song < ApplicationRecord
   validates :name, presence: true
-  validates :duration, presence: true
-  validates :track_number, presence: true
   validates :acousticness, presence: true
   validates :danceability, presence: true
   validates :energy, presence: true
@@ -14,7 +12,7 @@ class Song < ApplicationRecord
 
   has_many :playlists, :dependent => :destroy
   has_many :albums, through: :playlists
-  # 
+  #
   # attr_accessor :new_songs_arr
   #
   # def self.add(album)
