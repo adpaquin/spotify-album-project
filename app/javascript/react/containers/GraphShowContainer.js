@@ -248,7 +248,7 @@ class GraphShowContainer extends Component {
           <div className="button">Back</div>
         </Link>
         <h1 className="album-header">
-          Album: {mainAlbumName}
+          {mainAlbumName}
         </h1>
           {deleteButton}
         <div className="container">
