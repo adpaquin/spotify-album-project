@@ -281,7 +281,17 @@ class GraphShowContainer extends Component {
             items={items} />
           <button onClick={this.clearGraph}>Clear Graph</button>
           </div>
-          <img className="show-image" src={albumArt}/>
+
+          <div className="image-wrapper">
+            <img className="show-image" src={albumArt}/>
+              <h2 className="titles">Audio Attributes</h2>
+                {descriptionTextTiles}
+          </div>
+
+          <div className="item album-songs">
+            <h2 className="titles"> Album Songs</h2>
+            {mainAlbumSongs}
+          </div>
         </div>
         <div className="selectable-albums">
           {albumSelectTile}
@@ -289,17 +299,7 @@ class GraphShowContainer extends Component {
           <div className="album-show-button">
             <button onClick={this.showCompareableAlbums}>Show Compareable Albums</button>
           </div>
-        <div className="container2 callo" >
-          <div className="item album-info">
-            <h2 className="titles">Audio Attributes</h2>
-          {descriptionTextTiles}
         </div>
-        <div className="item album-songs">
-          <h2 className="titles"> Album Songs</h2>
-          {mainAlbumSongs}
-        </div>
-        </div>
-      </div>
     );
   }
 }

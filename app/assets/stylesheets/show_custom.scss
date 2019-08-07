@@ -1,9 +1,9 @@
 .show-image {
-  width: 35%;
-  height: 35%;
-  padding: 2em;
+  width: 400px;
+  height: 400px;
   border-radius: 3em;
   overflow: visible;
+  display: block;
 }
 
 .container {
@@ -12,7 +12,11 @@
 }
 
 svg:not(:root) {
-  overflow: visible;
+  // overflow: visible;
+}
+
+svg.rv-xy-plot__inner {
+  display: flex;
 }
 
 
@@ -66,6 +70,9 @@ svg:not(:root) {
  box-sizing: border-box;
 }
 
+.image-wrapper {
+  padding: 1em;
+}
 
 .single-album {
   padding: .5em;
