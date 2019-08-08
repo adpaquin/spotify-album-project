@@ -2,24 +2,16 @@
   width: 250px;
   height: 250px;
   border-radius: 2em;
-  // overflow: visible;
-  // display: block;
-  // padding-top: 2em;
 }
 
 .container {
   display: flex;
   flex-direction: row;
-  // border: solid;
-  // border-color: red;
-}
-
-svg:not(:root) {
-  // overflow: visible;
 }
 
 svg.rv-xy-plot__inner {
-  display: flex;
+  // display: flex;
+  // text-align: center;
 }
 
 p { margin: .2em 0;}
@@ -72,11 +64,6 @@ font-size: 1em;
   height: 30%;
   vertical-align: top;
   flex-wrap: nowrap;
-
-  // border: solid;
-  // border-color: blue;
-
-
 }
 
 .album-songs {
@@ -85,9 +72,6 @@ font-size: 1em;
   margin-top: 0;
   width: 30%;
   height: 30%;
-
-  // border: solid;
-  // border-color: green;
 }
 
 .selectable-albums {
@@ -109,11 +93,6 @@ font-size: 1em;
   border-radius: .3em;
 }
 
-// .single-album:focus {
-//   padding: .5em;
-//   background-color: black;
-//   border-radius: .3em;
-// }
 
 .album-show-button {
   text-align: center;

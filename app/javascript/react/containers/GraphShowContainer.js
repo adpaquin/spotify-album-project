@@ -256,8 +256,7 @@ class GraphShowContainer extends Component {
             startingAngle={0}
             width={500}
             height={400}
-            // viewBox={0, 0, 700, 600}
-            margin={{left: 0}, {right: 0}}
+            margin={{left: 50}, {right: 50}}
             tickFormat={format('.1r')}
             style={{
               labels: {fontSize: 15},
