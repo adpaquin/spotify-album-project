@@ -3,9 +3,6 @@ import FormAlbumNameField from '../components/FormAlbumNameField'
 import FormAlbumSongsField from '../components/FormAlbumSongsField'
 import {withRouterm} from 'react-router-dom'
 import { Link } from 'react-router-dom'
-// import Dropzone from 'react-dropzone';
-
-
 
 class FormShowContainer extends Component {
   constructor(props) {
@@ -58,14 +55,6 @@ class FormShowContainer extends Component {
 
     if(this.validateName(this.state.albumName) &&
       this.validateSongs(this.state.albumSongs)) {
-
-      // let formPayload = {
-      //   name: this.state.albumName,
-      //   albumSongs: this.state.albumSongs,
-      //   albumCoverURL: this.state.albumCoverURL
-      // }
-
-
       let body = new FormData()
         body.append("name", this.state.albumName)
         body.append("albumSongs", this.state.albumSongs)
@@ -171,8 +160,11 @@ class FormShowContainer extends Component {
           </form>
         </div>
         <div className="select-songs">
-          <h2 className="songs-header">Selected Songs:</h2>
+          <h2 className="songs-header"></h2>
+          <div className="select-song-list">
+          <h2 className="song-list-header">Selected Songs:</h2>
           {selectedSongs}
+          </div>
           </div>
         </div>
       </div>
