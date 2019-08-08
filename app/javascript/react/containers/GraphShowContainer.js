@@ -256,14 +256,15 @@ class GraphShowContainer extends Component {
             startingAngle={0}
             width={500}
             height={400}
-            margin={{left: 50}, {right: 50}}
+            margin={{left: 100}, {right: 75}}
+            // padding={{left: 50}, {right: 50}}
             tickFormat={format('.1r')}
             style={{
               labels: {fontSize: 15},
               polygons: {
                 strokeWidth: 0,
                 strokeOpacity: 1,
-                fillOpacity: 0.4
+                fillOpacity: 0.6
               },
             }}
             domains={[
@@ -310,8 +311,3 @@ class GraphShowContainer extends Component {
 }
 
 export default GraphShowContainer
-
-
-
-
-// <button onClick={this.handleDelete}>Delete Album</button>

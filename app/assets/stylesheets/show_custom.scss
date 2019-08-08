@@ -1,7 +1,9 @@
 .show-image {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   border-radius: 2em;
+  text-align: center;
+
 }
 
 .container {
@@ -36,7 +38,7 @@ font-size: 1em;
 }
 
 .item {
-  padding: .5em;
+  // padding: .5em;
 }
 
 .chart {
@@ -44,14 +46,15 @@ font-size: 1em;
   height: 100%;
   transform: translate(1em, 0em);
   overflow: visible;
-
 }
 
 .graph {
-  flex-basis: 50%;
+  flex-basis: 40%;
   text-align: center;
   overflow: visible;
+  // background-color: #e3e3e3;
 
+  padding: 1em;
 }
 
 
@@ -68,8 +71,8 @@ font-size: 1em;
 
 .album-songs {
   flex-basis: 25%;
-  margin: auto;
-  margin-top: 0;
+  // margin: auto;
+  // margin-top: 0;
   width: 30%;
   height: 30%;
 }
@@ -78,9 +81,16 @@ font-size: 1em;
  display: flex;
  justify-content: center;
  box-sizing: border-box;
+ background-color: #f95959;
+ border-radius: .2em;
+ // padding-bottom: .2em;
+
 }
 
 .image-wrapper {
+  padding-left: .5em;
+  padding-right: 2.5em;
+  display: block;
 }
 
 .single-album {
@@ -109,9 +119,20 @@ h1.album-header {
  text-decoration: underline;
 }
 
+div.item.graph {
+  text-align: center;
+}
 
 .rv-radar-chart {
   width: 100%;
+}
+
+.rv-xy-plot__inner {
+  display: block;
+  text-align: center;
+  background-color: white;
+  padding: 1em;
+  border-radius: .5em;
 }
 
 button {

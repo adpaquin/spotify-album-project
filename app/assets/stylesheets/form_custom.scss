@@ -2,12 +2,15 @@
   display: flex;
   flex-direction: row;
   padding: 1em
-
 }
 
 .form-container {
   flex-basis: 50%;
 }
+
+// div.select-song-list {
+//   background-color: white;
+// }
 
 .select-songs {
   flex-basis: 50%;
@@ -26,8 +29,13 @@
 }
 
 h2.songs-header {
-  font-size: 1.65em
+  font-size: 1.65em;
   // font-family: 'Roboto Slab', serif;
+}
+
+.select-form-songs-header {
+  font-size: 1.65em;
+  text-align: center;
 }
 
 .select-song-list{
@@ -38,4 +46,10 @@ h2.songs-header {
 
 .song-list-header {
   font-size: 1.6em;
+  text-decoration: underline;
+}
+
+h2.form-header {
+  text-decoration: underline;
+
 }

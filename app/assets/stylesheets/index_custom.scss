@@ -1,6 +1,8 @@
 body {
   font-family: 'Roboto Slab', serif;
-  // background-color: #e3e3e3;
+  background: url("background.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1.index-header {

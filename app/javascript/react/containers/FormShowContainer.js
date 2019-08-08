@@ -148,6 +148,7 @@ class FormShowContainer extends Component {
               handlerFunction={this.handleNameChange}
               value={this.state.albumName}
             />
+            <div className="select-form-songs-header">Select Songs</div>
             <FormAlbumSongsField
               label="Songs"
               name="Songs"
@@ -162,7 +163,7 @@ class FormShowContainer extends Component {
         <div className="select-songs">
           <h2 className="songs-header"></h2>
           <div className="select-song-list">
-          <h2 className="song-list-header">Selected Songs:</h2>
+          <h2 className="song-list-header">Selected Songs</h2>
           {selectedSongs}
           </div>
           </div>
