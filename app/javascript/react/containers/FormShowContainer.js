@@ -139,7 +139,7 @@ class FormShowContainer extends Component {
         </Link>
         <div className="form-show-container">
           <div className="form-container">
-          <h2 className="form-header">Create a New Playlist</h2>
+          <h2 className="form-header">Create New Playlist</h2>
           <form className="form" onSubmit={this.handleFormSubmit}>
             {errorDiv}
             <FormAlbumNameField
@@ -155,6 +155,9 @@ class FormShowContainer extends Component {
               handlerFunction={this.handleSongsChange}
               value={this.state.albumSongs}
             />
+            <div className="file-upload-header">
+              Add Image
+            </div>
             <input type="file" onChange={this.onDrop} />
             <button className="submit-button" type="submit">Submit</button>
             <button className="clear-button" onClick={this.handleClearForm}>Clear</button>

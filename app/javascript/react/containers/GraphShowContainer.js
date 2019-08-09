@@ -244,60 +244,62 @@ class GraphShowContainer extends Component {
         <Link to='/albums'>
           <div className="button">Back</div>
         </Link>
-        <h1 className="album-header">
-          {mainAlbumName}
-        </h1>
+        <div className="details-container">
+        <img className="show-image" src={albumArt}/>
+        <div>
+            <h1 className="album-header">
+              {mainAlbumName}
+            </h1>
+          <div className="container">
+            <div className="item graph">
+            <RadarChart
+              className={"chart"}
+              data={data}
+              startingAngle={0}
+              width={500}
+              height={400}
+              margin={{left: 90}, {right: 100}}
+              tickFormat={format('.1r')}
+              style={{
+                labels: {fontSize: 15},
+                polygons: {
+                  strokeWidth: 0,
+                  strokeOpacity: 1,
+                  fillOpacity: 0.6
+                },
+              }}
+              domains={[
+                {name: 'Acousticness', domain: [0, 100], getValue: d => d.acousticness_average},
+                {name: 'Danceability', domain: [0, 100], getValue: d => d.danceability_average},
+                {name: 'Energy', domain: [0, 100], getValue: d => d.energy_average},
+                {name: 'Instrumentalness', domain: [0, 100], getValue: d => d.instrumentalness_average},
+                {name: 'Liveness', domain: [0, 100], getValue: d => d.liveness_average},
+                {name: 'Tempo', domain: [50, 150], getValue: d => d.tempo_average}
+              ]}
+            />
+            <DiscreteColorLegend
+              className={"legend"}
+              orientation={'horizontal'}
+              items={items} />
+            <button onClick={this.clearGraph}>Clear Graph</button>
+            </div>
+
+            <div className="image-wrapper">
+                <h2 className="titles">Audio Attributes</h2>
+                  <p><span className="info-titles">Energy:</span><span className="info-text"> Intensity and Activity</span></p>
+                  <p><span className="info-titles">Danceability:</span><span className="info-text"> Rhythm stability and beat strength</span></p>
+                  <p><span className="info-titles">Acousticness:</span><span className="info-text"> Measure of overall acoustic sounds</span></p>
+                  <p><span className="info-titles">Tempo:</span><span className="info-text"> Beats per minute (BPM)</span></p>
+                  <p><span className="info-titles">Liveness:</span><span className="info-text"> Probability the album was performed live</span></p>
+                  <p><span className="info-titles">Instrumentalness:</span><span className="info-text"> Measure of overall instrumental sounds </span></p>
+            </div>
+              <div className="item album-songs">
+                <h2 className="titles"> Album Songs</h2>
+                {mainAlbumSongs}
+            </div>
+        </div>
           {deleteButton}
-        <div className="container">
-          <div className="item graph">
-          <RadarChart
-            className={"chart"}
-            data={data}
-            startingAngle={0}
-            width={500}
-            height={400}
-            margin={{left: 100}, {right: 75}}
-            // padding={{left: 50}, {right: 50}}
-            tickFormat={format('.1r')}
-            style={{
-              labels: {fontSize: 15},
-              polygons: {
-                strokeWidth: 0,
-                strokeOpacity: 1,
-                fillOpacity: 0.6
-              },
-            }}
-            domains={[
-              {name: 'Acousticness', domain: [0, 100], getValue: d => d.acousticness_average},
-              {name: 'Danceability', domain: [0, 100], getValue: d => d.danceability_average},
-              {name: 'Energy', domain: [0, 100], getValue: d => d.energy_average},
-              {name: 'Instrumentalness', domain: [0, 100], getValue: d => d.instrumentalness_average},
-              {name: 'Liveness', domain: [0, 100], getValue: d => d.liveness_average},
-              {name: 'Tempo', domain: [50, 150], getValue: d => d.tempo_average}
-            ]}
-          />
-          <DiscreteColorLegend
-            className={"legend"}
-            orientation={'horizontal'}
-            items={items} />
-          <button onClick={this.clearGraph}>Clear Graph</button>
-          </div>
-
-          <div className="image-wrapper">
-              <h2 className="titles">Audio Attributes</h2>
-                <p><span className="info-titles">Energy:</span><span className="info-text"> Intensity and Activity</span></p>
-                <p><span className="info-titles">Danceability:</span><span className="info-text"> Rhythm stability and beat strength</span></p>
-                <p><span className="info-titles">Acousticness:</span><span className="info-text"> Measure of overall acoustic sounds</span></p>
-                <p><span className="info-titles">Tempo:</span><span className="info-text"> Beats per minute (BPM)</span></p>
-                <p><span className="info-titles">Liveness:</span><span className="info-text"> Probability the album was performed live</span></p>
-                <p><span className="info-titles">Instrumentalness:</span><span className="info-text"> Measure of overall instrumental sounds </span></p>
-                <img className="show-image" src={albumArt}/>
-          </div>
-
-          <div className="item album-songs">
-            <h2 className="titles"> Album Songs</h2>
-            {mainAlbumSongs}
-          </div>
+        </div>
         </div>
         <div className="selectable-albums">
           {albumSelectTile}

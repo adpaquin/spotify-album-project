@@ -45,7 +45,7 @@ class AlbumsIndexContainer extends Component {
       signInMessage = "No albums to show! Please sign in and link to your Spotify account"
     }
     else {
-      newAlbumLink = <Link to='/albums/new'><div className="button">Create New Playlist</div></Link>
+      newAlbumLink = <Link className="album-tile add-button" to='/albums/new'><div>Create New Playlist</div></Link>
       spotifyAlbumsHeader = "My Album Collection"
     }
 
@@ -93,13 +93,17 @@ class AlbumsIndexContainer extends Component {
     return(
       <div>
         <div>
-          {newAlbumLink}
         </div>
         {signInMessage}
         <h1 className="index-header">{spotifyAlbumsHeader}</h1>
-          {albumTiles_spotify}
+          <div className="tiles-container">
+            {albumTiles_spotify}
+            {newAlbumLink}
+          </div>
         <h1 className="index-header">{userAlbumsHeader}</h1>
+        <div className="tiles-container">
           {albumTiles_user}
+        </div>
       </div>
     )
   }

@@ -3,20 +3,32 @@
   height: 300px;
   border-radius: 2em;
   text-align: center;
+  margin: 30px;
 
 }
 
-.container {
+
+
+.rv-discrete-color-legend {
+  background-color: white;
+  // border-bottom-left-radius: .5em;
+  // border-bottom-right-radius: .5em;
+}
+
+.details-container {
   display: flex;
-  flex-direction: row;
+  .container {
+    display: flex;
+    .graph {
+      & > div {
+        margin-left: -30px;
+      }
+    }
+  }
+
 }
 
-svg.rv-xy-plot__inner {
-  // display: flex;
-  // text-align: center;
-}
 
-p { margin: .2em 0;}
 
 span.bold {
   color: #233142;
@@ -49,33 +61,16 @@ font-size: 1em;
 }
 
 .graph {
-  flex-basis: 40%;
   text-align: center;
   overflow: visible;
-  // background-color: #e3e3e3;
+  padding: 30px;
+}
 
-  padding: 1em;
+.image-wrapper, .album-songs {
+  padding-top: 25px;
 }
 
 
-.album-info {
-  flex-basis: 25%;
-  margin: auto;
-  margin-top: 0;
-  padding-right: 0;
-  width: 60%;
-  height: 30%;
-  vertical-align: top;
-  flex-wrap: nowrap;
-}
-
-.album-songs {
-  flex-basis: 25%;
-  // margin: auto;
-  // margin-top: 0;
-  width: 30%;
-  height: 30%;
-}
 
 .selectable-albums {
  display: flex;
@@ -88,9 +83,11 @@ font-size: 1em;
 }
 
 .image-wrapper {
-  padding-left: .5em;
-  padding-right: 2.5em;
   display: block;
+  padding: 10px;
+  p{
+    margin-bottom: 3px;
+  }
 }
 
 .single-album {
@@ -110,6 +107,7 @@ font-size: 1em;
 
 .legend {
   font-size: 1em;
+  background: transparent;
 }
 
 h1.album-header {
