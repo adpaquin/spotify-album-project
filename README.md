@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+Solve for the too many requests in a short amount of time:
+- BACKGROUND JOBS featuring Redis and s rails 

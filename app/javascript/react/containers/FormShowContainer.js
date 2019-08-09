@@ -3,9 +3,6 @@ import FormAlbumNameField from '../components/FormAlbumNameField'
 import FormAlbumSongsField from '../components/FormAlbumSongsField'
 import {withRouterm} from 'react-router-dom'
 import { Link } from 'react-router-dom'
-// import Dropzone from 'react-dropzone';
-
-
 
 class FormShowContainer extends Component {
   constructor(props) {
@@ -58,14 +55,6 @@ class FormShowContainer extends Component {
 
     if(this.validateName(this.state.albumName) &&
       this.validateSongs(this.state.albumSongs)) {
-
-      // let formPayload = {
-      //   name: this.state.albumName,
-      //   albumSongs: this.state.albumSongs,
-      //   albumCoverURL: this.state.albumCoverURL
-      // }
-
-
       let body = new FormData()
         body.append("name", this.state.albumName)
         body.append("albumSongs", this.state.albumSongs)
@@ -150,7 +139,7 @@ class FormShowContainer extends Component {
         </Link>
         <div className="form-show-container">
           <div className="form-container">
-          <h2 className="form-header">Create a New Playlist</h2>
+          <h2 className="form-header">Create New Playlist</h2>
           <form className="form" onSubmit={this.handleFormSubmit}>
             {errorDiv}
             <FormAlbumNameField
@@ -159,20 +148,27 @@ class FormShowContainer extends Component {
               handlerFunction={this.handleNameChange}
               value={this.state.albumName}
             />
+            <div className="select-form-songs-header">Select Songs</div>
             <FormAlbumSongsField
               label="Songs"
               name="Songs"
               handlerFunction={this.handleSongsChange}
               value={this.state.albumSongs}
             />
+            <div className="file-upload-header">
+              Add Image
+            </div>
             <input type="file" onChange={this.onDrop} />
             <button className="submit-button" type="submit">Submit</button>
             <button className="clear-button" onClick={this.handleClearForm}>Clear</button>
           </form>
         </div>
         <div className="select-songs">
-          <h2 className="songs-header">Selected Songs:</h2>
+          <h2 className="songs-header"></h2>
+          <div className="select-song-list">
+          <h2 className="song-list-header">Selected Songs</h2>
           {selectedSongs}
+          </div>
           </div>
         </div>
       </div>

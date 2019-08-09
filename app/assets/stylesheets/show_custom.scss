@@ -1,64 +1,92 @@
 .show-image {
-  width: 35%;
-  height: 35%;
-  padding: 2em;
-  border-radius: 3em;
-  overflow: visible;
+  width: 300px;
+  height: 300px;
+  border-radius: 2em;
+  text-align: center;
+  margin: 30px;
+  margin-top: 120px;
 }
 
-.container {
+
+
+.rv-discrete-color-legend {
+  background-color: white;
+  // border-bottom-left-radius: .5em;
+  // border-bottom-right-radius: .5em;
+}
+
+.details-container {
   display: flex;
-  flex-direction: row;
+  .container {
+    display: flex;
+    .graph {
+      & > div {
+        margin-left: -30px;
+      }
+    }
+  }
+
 }
 
-svg:not(:root) {
-  overflow: visible;
+
+
+span.bold {
+  color: #233142;
 }
 
+span.info-titles {
+font-weight: bold;
+font-size: 1em;
+}
+
+.titles p {
+  font-style: italic;
+}
 
 .container2 {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
+
 }
 
-.item {
-  padding: .5em;
-}
 
 .chart {
   width: 100%;
   height: 100%;
+  transform: translate(1em, 0em);
+  overflow: visible;
 }
 
 .graph {
-  flex-basis: 50%;
   text-align: center;
+  overflow: visible;
+  padding: 30px;
+}
+
+.image-wrapper, .album-songs {
+  padding-top: 10px;
 }
 
 
-.album-info {
-  flex-basis: 25%;
-  margin: auto;
-  margin-top: 0;
-  width: 30%;
-  height: 30%;
-  vertical-align: top;
-}
-
-.album-songs {
-  flex-basis: 25%;
-  margin: auto;
-  margin-top: 0;
-  width: 30%;
-  height: 30%;
-}
 
 .selectable-albums {
  display: flex;
  justify-content: center;
  box-sizing: border-box;
+ background-color: #f95959;
+ border-radius: .2em;
+ // padding-bottom: .2em;
+
 }
 
+.image-wrapper {
+  display: block;
+  padding: 10px;
+  p{
+    margin-bottom: 3px;
+  }
+}
 
 .single-album {
   padding: .5em;
@@ -70,11 +98,6 @@ svg:not(:root) {
   border-radius: .3em;
 }
 
-// .single-album:focus {
-//   padding: .5em;
-//   background-color: black;
-//   border-radius: .3em;
-// }
 
 .album-show-button {
   text-align: center;
@@ -82,11 +105,30 @@ svg:not(:root) {
 
 .legend {
   font-size: 1em;
+  background: transparent;
 }
 
 h1.album-header {
  padding: .2em;
- color: #f95959;
+ color: black;
+ font-family: 'Roboto Slab', serif;
+ text-decoration: underline;
+}
+
+// div.item.graph {
+//   text-align: center;
+// }
+
+.rv-radar-chart {
+  width: 100%;
+}
+
+.rv-xy-plot__inner {
+  display: block;
+  text-align: center;
+  background-color: white;
+  padding: 1em;
+  border-radius: .5em;
 }
 
 button {
@@ -109,5 +151,8 @@ button {
 
 h2.titles {
   color: #f95959;
-  font-size: 2em;
+  font-size: 1.5em;
+  font-family: 'Roboto Slab', serif;
+  text-decoration: underline;
+  font-weight: 600;
 }

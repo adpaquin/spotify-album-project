@@ -2,11 +2,14 @@
   display: flex;
   flex-direction: row;
   padding: 1em
-
 }
 
 .form-container {
   flex-basis: 50%;
+}
+
+input {
+  text-align: center;
 }
 
 .select-songs {
@@ -26,5 +29,26 @@
 }
 
 h2.songs-header {
-  font-size: 1.65em
+  font-size: 1.65em;
+  // font-family: 'Roboto Slab', serif;
+}
+
+.select-form-songs-header, .file-upload-header {
+  font-size: 1.65em;
+  text-align: center;
+}
+
+.select-song-list{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 1em;
+}
+
+.song-list-header {
+  font-size: 1.6em;
+  text-decoration: underline;
+}
+
+h2.form-header {
+  text-decoration: underline;
 }
