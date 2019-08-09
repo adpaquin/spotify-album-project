@@ -281,7 +281,6 @@ class GraphShowContainer extends Component {
               className={"legend"}
               orientation={'horizontal'}
               items={items} />
-            <button onClick={this.clearGraph}>Clear Graph</button>
             </div>
 
             <div className="image-wrapper">
@@ -292,6 +291,8 @@ class GraphShowContainer extends Component {
                   <p><span className="info-titles">Tempo:</span><span className="info-text"> Beats per minute (BPM)</span></p>
                   <p><span className="info-titles">Liveness:</span><span className="info-text"> Probability the album was performed live</span></p>
                   <p><span className="info-titles">Instrumentalness:</span><span className="info-text"> Measure of overall instrumental sounds </span></p>
+                  <button onClick={this.clearGraph}>Clear Graph</button>
+
             </div>
               <div className="item album-songs">
                 <h2 className="titles"> Album Songs</h2>

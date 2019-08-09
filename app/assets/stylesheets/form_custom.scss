@@ -8,9 +8,9 @@
   flex-basis: 50%;
 }
 
-// div.select-song-list {
-//   background-color: white;
-// }
+input {
+  text-align: center;
+}
 
 .select-songs {
   flex-basis: 50%;
@@ -33,7 +33,7 @@ h2.songs-header {
   // font-family: 'Roboto Slab', serif;
 }
 
-.select-form-songs-header {
+.select-form-songs-header, .file-upload-header {
   font-size: 1.65em;
   text-align: center;
 }
@@ -51,5 +51,4 @@ h2.songs-header {
 
 h2.form-header {
   text-decoration: underline;
-
 }

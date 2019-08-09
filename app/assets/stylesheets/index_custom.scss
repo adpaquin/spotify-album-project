@@ -24,9 +24,9 @@ h1.index-header {
     width: 18%;
 
     &:hover{
-      -webkit-box-shadow: -1px 4px 29px 0px rgba(0,0,0,0.5);
-      -moz-box-shadow: -1px 4px 29px 0px rgba(0,0,0,0.5);
-      box-shadow: -1px 4px 29px 0px rgba(0,0,0,0.5);
+      -webkit-box-shadow: -1px 4px 29px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -1px 4px 29px 0px rgba(0,0,0,0.75);
+      box-shadow: -1px 4px 29px 0px rgba(0,0,0,0.75);
     }
 
     &.add-button {
@@ -40,6 +40,8 @@ h1.index-header {
     }
   }
 }
+
+
 
 .index-header {
  color: black;
