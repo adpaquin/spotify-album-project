@@ -202,7 +202,7 @@ class GraphShowContainer extends Component {
           )
         })
         if(this.state.albumInfo[0].from_spotify == false) {
-          deleteButton = <button onClick={this.handleDelete}>Delete Album</button>
+          deleteButton = <button className="delete-button" onClick={this.handleDelete}>Delete Album</button>
         }
         else {
           deleteButton = <div></div>
@@ -244,12 +244,13 @@ class GraphShowContainer extends Component {
         <Link to='/albums'>
           <div className="button">Back</div>
         </Link>
+        <h1 className="album-header">
+          {mainAlbumName}
+        </h1>
+        {deleteButton}
         <div className="details-container">
         <img className="show-image" src={albumArt}/>
         <div>
-            <h1 className="album-header">
-              {mainAlbumName}
-            </h1>
           <div className="container">
             <div className="item graph">
             <RadarChart
@@ -299,7 +300,6 @@ class GraphShowContainer extends Component {
                 {mainAlbumSongs}
             </div>
         </div>
-          {deleteButton}
         </div>
         </div>
         <div className="selectable-albums">
