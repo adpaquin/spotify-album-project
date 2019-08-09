@@ -78,7 +78,7 @@ font-size: 1em;
 
 .image-wrapper {
   display: block;
-  padding: 10px;
+  padding: 20px;
   p{
     margin-bottom: 3px;
   }
@@ -105,7 +105,8 @@ font-size: 1em;
 }
 
 h1.album-header {
- padding: .2em;
+ // padding: .2em;
+ padding-left: 30px;
  color: black;
  font-family: 'Roboto Slab', serif;
  text-decoration: underline;
@@ -138,6 +139,7 @@ button {
 
 .button {
   background-color: #455d7a;
+
   border-radius: 5px;
   &:hover {
     background-color: #f95959;
