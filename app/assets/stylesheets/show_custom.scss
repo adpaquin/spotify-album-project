@@ -1,18 +1,13 @@
 .show-image {
   width: 300px;
   height: 300px;
-  border-radius: 2em;
+  border-radius: .5em;
   text-align: center;
   margin: 30px;
-  margin-top: 120px;
 }
-
-
 
 .rv-discrete-color-legend {
   background-color: white;
-  // border-bottom-left-radius: .5em;
-  // border-bottom-right-radius: .5em;
 }
 
 .details-container {
@@ -25,10 +20,11 @@
       }
     }
   }
-
 }
 
-
+.delete-button {
+  margin-left: 35px;
+}
 
 span.bold {
   color: #233142;
