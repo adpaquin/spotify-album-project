@@ -39,10 +39,14 @@ class AlbumsIndexContainer extends Component {
     let albums = this.state.albums
     let spotifyAlbumsHeader = ""
     let userAlbumsHeader = ""
+    let signInMessageCredentialsEmail =""
+    let signInMessageCredentialsPassword =""
 
 
     if(albums.length == 0) {
-      signInMessage = "No albums to show! Please sign in and link to your Spotify account"
+      signInMessage = "Please sign in with the following credentials during development:"
+      signInMessageCredentialsEmail = "Email: test@email.com"
+      signInMessageCredentialsPassword = "Password: password"
     }
     else {
       newAlbumLink = <Link className="album-tile add-button" to='/albums/new'><div>Create New Playlist</div></Link>
@@ -92,9 +96,11 @@ class AlbumsIndexContainer extends Component {
 
     return(
       <div>
-        <div>
+        <div className="sign-in-message">
+          <div className="sign-in-header">{signInMessage}</div>
+          <div>{signInMessageCredentialsEmail}</div>
+          {signInMessageCredentialsPassword}
         </div>
-        {signInMessage}
         <h1 className="index-header">{spotifyAlbumsHeader}</h1>
           <div className="tiles-container">
             {albumTiles_spotify}
