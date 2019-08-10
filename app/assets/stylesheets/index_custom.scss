@@ -1,6 +1,5 @@
 body {
   font-family: 'Roboto Slab', serif;
-  // background: url("background.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: #F0F0F0;
@@ -8,9 +7,29 @@ body {
 
 h1.index-header {
   font-family: 'Roboto Slab', serif;
-  text-decoration: underline;
   width: 70%;
   margin: auto;
+}
+
+.sign-in-message-container {
+  text-align: center;
+
+}
+
+.sign-in-message-text {
+  padding-top: 30px;
+}
+
+.home-page-text {
+  font-size: 2em;
+
+  span {
+    font-size: 1em;
+  }
+}
+
+.home-page-image {
+  background-image: url('home-page');
 }
 
 .tiles-container {
@@ -18,6 +37,7 @@ h1.index-header {
   flex-wrap: wrap;
   width: 70%;
   margin: auto;
+  background-color: white;
 
   .album-tile {
     margin: 0.5rem;
@@ -61,6 +81,7 @@ h1.index-header {
 .album-show-tile {
  padding: .1em;
 }
+
 
 span.info-text {
   font-style: italic;

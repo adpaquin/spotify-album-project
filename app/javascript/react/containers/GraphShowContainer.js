@@ -142,7 +142,6 @@ class GraphShowContainer extends Component {
     })
 
       albumSelectTile = albumSelectTile.map(album => {
-
         if(album.from_spotify == true) {
           cover_art = album.cover_image
         }
@@ -155,7 +154,6 @@ class GraphShowContainer extends Component {
         <div className="single-album" key={album.id} onClick={ () => this.addAlbum(album.id) }>
           <img src={cover_art} height="200" width="200" />
         </div>
-
       )
     })
 
@@ -164,7 +162,6 @@ class GraphShowContainer extends Component {
       if(this.state.albumInfo[0]) {
         mainAlbumArtist = this.state.albumInfo[0].artist_name
         mainAlbumName = this.state.albumInfo[0].name
-
         if(this.state.albumInfo[0].cover_image) {
           albumArt = this.state.albumInfo[0].cover_image
         }
@@ -184,9 +181,7 @@ class GraphShowContainer extends Component {
         else {
           legendColor = legendColor2
         }
-
         legendColorCounter += 1
-
         return {title: album.name, color: legendColor}
       })
 
@@ -202,13 +197,12 @@ class GraphShowContainer extends Component {
           )
         })
         if(this.state.albumInfo[0].from_spotify == false) {
-          deleteButton = <button className="delete-button" onClick={this.handleDelete}>Delete Album</button>
+          deleteButton = <a className="delete-button" onClick={this.handleDelete}>Delete Playlist</a>
         }
         else {
           deleteButton = <div></div>
         }
       }
-
       let descriptionTextTiles = descriptionText.map( text => {
         return (
           <TextTile
@@ -220,11 +214,10 @@ class GraphShowContainer extends Component {
 
       const color1 = "#455d7a"
       const color2 = "#f73859"
-
       let color;
       let colorCounter = 0
-
       let data = this.state.albumInfo
+
       let colorData = data.map(data => {
         if(colorCounter == 0) {
           color = color1
@@ -241,15 +234,15 @@ class GraphShowContainer extends Component {
 
     return (
       <div>
-        <Link to='/albums'>
-          <div className="button">Back</div>
-        </Link>
         <h1 className="album-header">
           {mainAlbumName}
         </h1>
-        {deleteButton}
-        <div className="details-container">
-        <img className="show-image" src={albumArt}/>
+        <Link className="back-button-link" to='/albums'>Back to Homepage</Link>
+          <div className="details-container">
+          <div>
+            <img className="show-image" src={albumArt}/>
+            <div>{deleteButton}</div>
+            </div>
         <div>
           <div className="container">
             <div className="item graph">
