@@ -154,11 +154,13 @@ class FormShowContainer extends Component {
               value={this.state.albumSongs}
             />
             <div className="file-upload-header">
-              Add Image
+              Add Cover Art
             </div>
             <input className="file-input" type="file" onChange={this.onDrop} />
-            <button className="submit-button" type="submit">Submit</button>
-            <button className="clear-button" onClick={this.handleClearForm}>Clear</button>
+            <div className="form-buttons">
+              <button className="submit-button" type="submit">Submit</button>
+              <button className="clear-button" onClick={this.handleClearForm}>Clear</button>
+            </div>
           </form>
         </div>
         <div className="select-songs">

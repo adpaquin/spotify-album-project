@@ -2,7 +2,7 @@ import React from 'react'
 
 const FormAlbumNameField = (props) => {
   return(
-    <label> {props.label}
+    <label> <div className="album-name-header">{props.label}</div>
       <textarea
         onChange={props.handlerFunction}
         value={props.value}
