@@ -54,7 +54,7 @@ class AlbumsIndexContainer extends Component {
                       </div>
 
       homePageImage = <img className="home-page-image" src={ require('../../../assets/images/home-page.jpg') } />
-      
+
     }
     else {
       newAlbumLink = <Link className="album-tile add-button" to='/albums/new'><div>Create New Playlist</div></Link>

@@ -12,7 +12,9 @@ input {
   text-align: center;
 }
 
-
+.form-buttons {
+  text-align: center;
+}
 
 .select-songs {
   flex-basis: 50%;
@@ -36,13 +38,17 @@ input {
 }
 
 h2.songs-header {
+  font-size: 2em;
+  color: black;
+}
+
+.album-name-header {
   font-size: 1.65em;
-  // font-family: 'Roboto Slab', serif;
 }
 
 .select-form-songs-header, .file-upload-header {
   font-size: 1.65em;
-  text-align: center;
+  padding-bottom: 10px;
 }
 
 .select-song-list{
