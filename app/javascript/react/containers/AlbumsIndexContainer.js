@@ -39,14 +39,25 @@ class AlbumsIndexContainer extends Component {
     let albums = this.state.albums
     let spotifyAlbumsHeader = ""
     let userAlbumsHeader = ""
-    let signInMessageCredentialsEmail =""
-    let signInMessageCredentialsPassword =""
+    let signInMessageCredentialsEmail = ""
+    let signInMessageCredentialsPassword = ""
+    // let homePageImage = <img scr={"../../../assets/images/home-page.jpg"} />
+    let homePageText;
+
 
 
     if(albums.length == 0) {
       signInMessage = "Please sign in with the following credentials during development:"
       signInMessageCredentialsEmail = "Email: test@email.com"
       signInMessageCredentialsPassword = "Password: password"
+
+        // let homePageText = return(
+        //   <div className="home-page-text">
+        //     <div>Welcome to Album Analytics</div>
+        //     <div>Welcome to Album Analytics</div>
+        //     <div>Welcome to Album Analytics</div>
+        //   </div>
+        // )
     }
     else {
       newAlbumLink = <Link className="album-tile add-button" to='/albums/new'><div>Create New Playlist</div></Link>
@@ -59,7 +70,7 @@ class AlbumsIndexContainer extends Component {
 
     let albumTiles_spotify = spotify_albums.map(album => {
       return (
-        <div className="album-tile">
+        <div key={album.id} className="album-tile">
           <AlbumTile
             key={album.id}
             id={album.id}
@@ -81,7 +92,7 @@ class AlbumsIndexContainer extends Component {
 
     let albumTiles_user = user_albums.map(album => {
       return (
-        <div className="album-tile">
+        <div key={album.id} className="album-tile">
           <AlbumTileUser
             key={album.id}
             id={album.id}
@@ -99,7 +110,7 @@ class AlbumsIndexContainer extends Component {
         <div className="sign-in-message">
           <div className="sign-in-header">{signInMessage}</div>
           <div>{signInMessageCredentialsEmail}</div>
-          {signInMessageCredentialsPassword}
+            <div>{signInMessageCredentialsPassword}</div>
         </div>
         <h1 className="index-header">{spotifyAlbumsHeader}</h1>
           <div className="tiles-container">

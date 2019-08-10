@@ -12,6 +12,8 @@ input {
   text-align: center;
 }
 
+
+
 .select-songs {
   flex-basis: 50%;
   text-align: center;
@@ -21,6 +23,11 @@ input {
 .form-header {
   text-align: center;
   font-size: 2em;
+}
+
+.clear-button {
+  margin: 10px;
+  text-align: center;
 }
 
 .submit-button, .clear-button {

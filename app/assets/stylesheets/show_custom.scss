@@ -26,6 +26,11 @@
   margin-left: 35px;
 }
 
+a.back-button-link {
+  color: black;
+  margin-left: 30px;
+}
+
 span.bold {
   color: #233142;
 }
@@ -60,11 +65,13 @@ font-size: 1em;
   padding: 30px;
 }
 
-.image-wrapper, .album-songs {
+.image-wrapper {
   padding-top: 10px;
 }
 
-
+ .album-songs {
+   padding-top: 15px;
+ }
 
 .selectable-albums {
  display: flex;
@@ -105,16 +112,15 @@ font-size: 1em;
 }
 
 h1.album-header {
- // padding: .2em;
  padding-left: 30px;
  color: black;
  font-family: 'Roboto Slab', serif;
- text-decoration: underline;
 }
 
-// div.item.graph {
-//   text-align: center;
-// }
+a.delete-button {
+  color: #f95959;
+  padding-left: 90px;
+}
 
 .rv-radar-chart {
   width: 100%;

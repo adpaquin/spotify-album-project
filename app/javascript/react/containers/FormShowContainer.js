@@ -134,9 +134,7 @@ class FormShowContainer extends Component {
       })
     return(
       <div>
-        <Link to='/albums'>
-          <div className="button">Back</div>
-        </Link>
+        <Link className="back-button-link" to='/albums'>Back to Homepage</Link>
         <div className="form-show-container">
           <div className="form-container">
           <h2 className="form-header">Create New Playlist</h2>
@@ -158,7 +156,7 @@ class FormShowContainer extends Component {
             <div className="file-upload-header">
               Add Image
             </div>
-            <input type="file" onChange={this.onDrop} />
+            <input className="file-input" type="file" onChange={this.onDrop} />
             <button className="submit-button" type="submit">Submit</button>
             <button className="clear-button" onClick={this.handleClearForm}>Clear</button>
           </form>
