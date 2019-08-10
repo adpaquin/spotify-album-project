@@ -20,6 +20,7 @@ def self.add(album, user)
   new_songs_arr = []
 
   album.tracks_cache.each do |song|
+
     name = song.name
     acousticness = song.audio_features.acousticness * 100
     danceability = song.audio_features.danceability * 100
@@ -42,6 +43,7 @@ def self.add(album, user)
       album_instrumentalness += instrumentalness
       album_liveness += liveness
       album_tempo += tempo
+
 
     end
 
