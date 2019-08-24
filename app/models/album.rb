@@ -1,9 +1,7 @@
 require 'rspotify'
 
 class Album < ApplicationRecord
-  # validates :artist_name, presence: true
   mount_uploader :cover_art, CoverArtUploader
-
   validates :name, presence: true
   validates :acousticness_average, presence: true
   validates :danceability_average, presence: true
@@ -59,6 +57,5 @@ class Album < ApplicationRecord
                   liveness_average: liveness_average,
                   tempo_average: tempo_average)
     end
-
 
 end
