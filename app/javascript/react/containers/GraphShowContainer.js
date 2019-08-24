@@ -16,6 +16,12 @@ const descriptionText = [
   'Instrumentalness: Measure of overal instrumenatl sounds'
 ]
 
+const graphColor1 = "#455d7a"
+const graphColor2 = "#f73859"
+const legendColor1 = "#455d7a"
+const legendColor2 = "#f73859"
+
+
 class GraphShowContainer extends Component {
   constructor(props) {
     super(props)
@@ -53,7 +59,6 @@ class GraphShowContainer extends Component {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
-
 
     showCompareableAlbums() {
       fetch(`/api/v1/albums`)
@@ -135,29 +140,31 @@ class GraphShowContainer extends Component {
     let baseId = this.state.albumBaseId
     let deleteButton;
     let cover_art;
+    let color;
+    let colorCounter = 0
+    let data = this.state.albumInfo
+    let albumArt
+    let legendColorCounter = 0
+    let legendColor;
 
 
     let albumSelectTile = this.state.albumTiles.filter(album => {
         return(album.id !== baseId)
     })
 
-      albumSelectTile = albumSelectTile.map(album => {
-        if(album.from_spotify == true) {
-          cover_art = album.cover_image
-        }
-        else {
-          cover_art = album.cover_art.url
-        }
-
-
+    albumSelectTile = albumSelectTile.map(album => {
+      if(album.from_spotify == true) {
+        cover_art = album.cover_image
+      }
+      else {
+        cover_art = album.cover_art.url
+      }
       return(
         <div className="single-album" key={album.id} onClick={ () => this.addAlbum(album.id) }>
           <img src={cover_art} height="200" width="200" />
         </div>
       )
     })
-
-    let albumArt;
 
       if(this.state.albumInfo[0]) {
         mainAlbumArtist = this.state.albumInfo[0].artist_name
@@ -168,22 +175,6 @@ class GraphShowContainer extends Component {
         else {
           albumArt = this.state.albumInfo[0].cover_art["url"]
         }
-
-        const legendColor1 = "#455d7a"
-        const legendColor2 = "#f73859"
-        let legendColorCounter = 0
-        let legendColor;
-
-      items = this.state.albumInfo.map(album => {
-        if(legendColorCounter == 0) {
-          legendColor = legendColor1
-        }
-        else {
-          legendColor = legendColor2
-        }
-        legendColorCounter += 1
-        return {title: album.name, color: legendColor}
-      })
 
       let counter = 0;
         mainAlbumSongs = this.state.albumInfo[0].songs.map(song => {
@@ -196,6 +187,7 @@ class GraphShowContainer extends Component {
             />
           )
         })
+
         if(this.state.albumInfo[0].from_spotify == false) {
           deleteButton = <a className="delete-button" onClick={this.handleDelete}>Delete Playlist</a>
         }
@@ -212,18 +204,23 @@ class GraphShowContainer extends Component {
         )
       })
 
-      const color1 = "#455d7a"
-      const color2 = "#f73859"
-      let color;
-      let colorCounter = 0
-      let data = this.state.albumInfo
+      items = this.state.albumInfo.map(album => {
+        if(legendColorCounter == 0) {
+          legendColor = legendColor1
+        }
+        else {
+          legendColor = legendColor2
+        }
+        legendColorCounter += 1
+        return {title: album.name, color: legendColor}
+      })
 
       let colorData = data.map(data => {
         if(colorCounter == 0) {
-          color = color1
+          color = graphColor1
         }
         else {
-          color = color2
+          color = graphColor2
         }
         colorCounter += 1
         return(
@@ -234,28 +231,24 @@ class GraphShowContainer extends Component {
 
     return (
       <div>
-        <h1 className="album-header">
-          {mainAlbumName}
-        </h1>
+        <h1 className="album-header">{mainAlbumName}</h1>
         <Link className="back-button-link" to='/albums'>Back to Homepage</Link>
-          <div className="details-container">
-          <div>
-            <img className="show-image" src={albumArt}/>
-            <div>{deleteButton}</div>
-            </div>
-        <div>
+        <div className="details-container"><div>
+        <img className="show-image" src={albumArt}/>
+        <div>{deleteButton}</div>
+        </div>
           <div className="container">
             <div className="item graph">
             <RadarChart
               className={"chart"}
               data={data}
               startingAngle={0}
-              width={500}
-              height={400}
+              width={400}
+              height={300}
               margin={{left: 90}, {right: 100}}
               tickFormat={format('.1r')}
               style={{
-                labels: {fontSize: 15},
+                labels: {fontSize: 13},
                 polygons: {
                   strokeWidth: 0,
                   strokeOpacity: 1,
@@ -276,26 +269,23 @@ class GraphShowContainer extends Component {
               orientation={'horizontal'}
               items={items} />
             </div>
-
             <div className="image-wrapper">
-                <h2 className="titles">Audio Attributes</h2>
-                  <p><span className="info-titles">Energy:</span><span className="info-text"> Intensity and Activity</span></p>
-                  <p><span className="info-titles">Danceability:</span><span className="info-text"> Rhythm stability and beat strength</span></p>
-                  <p><span className="info-titles">Acousticness:</span><span className="info-text"> Measure of overall acoustic sounds</span></p>
-                  <p><span className="info-titles">Tempo:</span><span className="info-text"> Beats per minute (BPM)</span></p>
-                  <p><span className="info-titles">Liveness:</span><span className="info-text"> Probability the album was performed live</span></p>
-                  <p><span className="info-titles">Instrumentalness:</span><span className="info-text"> Measure of overall instrumental sounds </span></p>
-                  <button onClick={this.clearGraph}>Clear Graph</button>
-
+              <h2 className="titles">Audio Attributes</h2>
+              <p><span className="info-titles">Energy:</span><span className="info-text"> Intensity and Activity</span></p>
+              <p><span className="info-titles">Danceability:</span><span className="info-text"> Rhythm stability and beat strength</span></p>
+              <p><span className="info-titles">Acousticness:</span><span className="info-text"> Measure of overall acoustic sounds</span></p>
+              <p><span className="info-titles">Tempo:</span><span className="info-text"> Beats per minute (BPM)</span></p>
+              <p><span className="info-titles">Liveness:</span><span className="info-text"> Probability the album was performed live</span></p>
+              <p><span className="info-titles">Instrumentalness:</span><span className="info-text"> Measure of overall instrumental sounds </span></p>
+              <button onClick={this.clearGraph}>Clear Graph</button>
             </div>
               <div className="item album-songs">
                 <h2 className="titles"> Album Songs</h2>
                 {mainAlbumSongs}
+              </div>
             </div>
-        </div>
-        </div>
-        </div>
-        <div className="selectable-albums">
+          </div>
+            <div className="selectable-albums">
           {albumSelectTile}
         </div>
           <div className="album-show-button">

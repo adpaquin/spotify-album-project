@@ -13,7 +13,6 @@ class FormShowContainer extends Component {
       albumCoverURL: '',
       files: [],
       errors: {}
-
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleNameChange = this.handleNameChange.bind(this)
@@ -52,14 +51,12 @@ class FormShowContainer extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault()
-
     if(this.validateName(this.state.albumName) &&
       this.validateSongs(this.state.albumSongs)) {
       let body = new FormData()
         body.append("name", this.state.albumName)
         body.append("albumSongs", this.state.albumSongs)
         body.append("photo", this.state.files[0])
-
       this.addNewAlbum(body)
     }
   }
@@ -86,11 +83,11 @@ class FormShowContainer extends Component {
   }
 
   validateName(input) {
-  if (input.trim() === '') {
-    let newError = { nameInput: 'You must input an album name' }
-    this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-    return false
-  } else {
+    if (input.trim() === '') {
+      let newError = { nameInput: 'You must input an album name' }
+      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      return false
+    } else {
       let errorState = this.state.errors
       delete errorState.nameInput
       this.setState({ errors: errorState })
@@ -124,7 +121,6 @@ class FormShowContainer extends Component {
       errorDiv = errorDiv.props.children.key
     }
 
-
       let selectedSongs = this.state.albumSongs.map(song => {
         return(
           <div key={song}>
@@ -132,6 +128,7 @@ class FormShowContainer extends Component {
           </div>
         )
       })
+
     return(
       <div>
         <Link className="back-button-link" to='/albums'>Back to Homepage</Link>
@@ -153,9 +150,7 @@ class FormShowContainer extends Component {
               handlerFunction={this.handleSongsChange}
               value={this.state.albumSongs}
             />
-            <div className="file-upload-header">
-              Add Cover Art
-            </div>
+            <div className="file-upload-header">Add Cover Art</div>
             <input className="file-input" type="file" onChange={this.onDrop} />
             <div className="form-buttons">
               <button className="submit-button" type="submit">Submit</button>
