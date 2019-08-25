@@ -1,5 +1,3 @@
-# require activerecord-import
-
 class AlbumCreator
 
 def self.add(album, user)
@@ -74,6 +72,6 @@ def self.add(album, user)
         Playlist.create(album_id: new_album.id, song_id: song.id)
       end
 
-end
+    end
 
 end
