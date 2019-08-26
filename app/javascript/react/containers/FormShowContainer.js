@@ -44,7 +44,7 @@ class FormShowContainer extends Component {
       }
     })
     .then(response => {
-      this.props.history.push("/")
+      this.props.history.push("/albums")
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
