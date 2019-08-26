@@ -99,7 +99,7 @@ class GraphShowContainer extends Component {
         }
       })
       .then(response => {
-        this.props.history.push("/")
+        this.props.history.push("/albums")
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
@@ -136,18 +136,15 @@ class GraphShowContainer extends Component {
     let mainAlbumArtist = ''
     let mainAlbumName = ''
     let mainAlbumSongs = []
-    let items = []
-    let baseId = this.state.albumBaseId
     let deleteButton;
     let cover_art;
-    let color;
     let colorCounter = 0
     let data = this.state.albumInfo
-    let albumArt
+    let albumArt;
     let legendColorCounter = 0
-    let legendColor;
 
 
+    const baseId = this.state.albumBaseId
     let albumSelectTile = this.state.albumTiles.filter(album => {
         return(album.id !== baseId)
     })
@@ -204,7 +201,9 @@ class GraphShowContainer extends Component {
         )
       })
 
-      items = this.state.albumInfo.map(album => {
+      let legendColor;
+      let color;
+      let items = this.state.albumInfo.map(album => {
         if(legendColorCounter == 0) {
           legendColor = legendColor1
         }
